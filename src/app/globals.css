@@ -19,3 +19,106 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Existing Animations */
+@keyframes float {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 1.5s ease-out forwards;
+}
+
+@keyframes rotateHover {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(10deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(-10deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+.animate-rotate-hover {
+  animation: rotateHover 4s ease-in-out infinite;
+}
+
+/* New Animations */
+
+/* Cloud Animation: Move from right to left */
+@keyframes cloudMove {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-cloud-move {
+  animation: cloudMove 8s linear infinite;
+}
+
+/* Logo Animation: Bounce Effect */
+@keyframes logoBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-logo-bounce {
+  animation: logoBounce 3s ease-in-out infinite;
+}
+
+/* Magnifying Glass Animation: Z Pattern */
+@keyframes magnifyingGlass {
+  0% {
+    left: -10%; /* Start at original position */
+    top: 0%;
+  }
+  25% {
+    left: 40%; /* Move to the left */
+    top: 5%;
+  }
+  50% {
+    left: 0%; /* Move further left */
+    top: 30%;
+  }
+  75% {
+    left: 20%; /* Move back to the right */
+    top: 20%;
+  }
+  100% {
+    left: 40%; /* Return to the original position */
+    top: 20%;
+  }
+}
+
+.animate-magnifying-glass {
+  animation: magnifyingGlass 5s ease-in-out infinite;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 12px; /* Adjust this value to decrease the row gap */
+  column-gap: 0px; /* Adjust this value to decrease the column gap */
+}

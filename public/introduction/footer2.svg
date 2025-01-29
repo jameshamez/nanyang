@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 462 113.38">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff6ef;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <g id="_แถบด้านล่าง_2" data-name="แถบด้านล่าง 2">
+    <path class="cls-1" d="M294.01,0c-7.3,0-13.7,4.94-15.49,12.02-5.36,21.25-24.6,36.98-47.52,36.98s-42.16-15.73-47.52-36.98c-1.78-7.08-8.19-12.02-15.49-12.02H0v113.38h462V0h-167.99Z"/>
+  </g>
+</svg>

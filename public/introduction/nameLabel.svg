@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111.87 34.14">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4f77ba;
+        font-family: DBHeavent-Bold, 'DB Heavent';
+        font-size: 30px;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <g id="_คุณชื่ออะไร" data-name="คุณชื่ออะไร">
+    <text class="cls-1" transform="translate(0 23.55)"><tspan x="0" y="0">คุณชื่ออะไร ?</tspan></text>
+  </g>
+</svg>
