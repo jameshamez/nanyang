@@ -18,17 +18,17 @@ export default function Introduction() {
       alert("Please fill out all fields");
       return;
     }
-
+  
     // Prepare data to send to the API
     const userData = {
       name,
       gender: selectedGender,
       age: selectedAge,
       occupation: selectedOccupation,
-      jobDesc: selectedOccupation === "student" ? null : "User's job description", // Replace with actual input if needed
-      companySector: selectedOccupation === "student" ? null : "User's company sector", // Replace with actual input if needed
+      jobDesc: selectedOccupation === "student" ? null : null, // Leave as null for non-students
+      companySector: selectedOccupation === "student" ? null : null, // Leave as null for non-students
     };
-
+  
     if (selectedOccupation === "student") {
       try {
         // Send data to the API route
@@ -39,22 +39,29 @@ export default function Introduction() {
           },
           body: JSON.stringify(userData),
         });
-
+  
+        const data = await response.json(); // Parse the response body
         if (response.ok) {
-          console.log("User data saved successfully");
+          console.log("User data saved successfully:", data);
           // Redirect to the quiz section
           router.push("/quiz");
         } else {
-          console.error("Failed to save user data");
+          console.error("Failed to save user data:", data.message);
         }
       } catch (error) {
         console.error("Error saving user data:", error);
       }
     } else {
-      // Store data temporarily in localStorage
-      localStorage.setItem("userData", JSON.stringify(userData));
-      // Redirect to the introductionCon page
-      router.push("/introductionCon");
+      try {
+        // Store data temporarily in localStorage
+        localStorage.setItem("userData", JSON.stringify(userData));
+        console.log("User data saved to localStorage:", userData);
+        // Redirect to the introductionCon page
+        router.push("/introductionCon");
+      } catch (error) {
+        console.error("Error saving to localStorage:", error);
+        alert("Failed to save data. Please try again.");
+      }
     }
   };
 
