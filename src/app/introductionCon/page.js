@@ -1,11 +1,13 @@
 "use client"; // Mark this as a Client Component (required for useState and interactivity)
 
 import { useState, useEffect } from "react"; // Import useState and useEffect for interactivity
+import { useRouter } from "next/navigation"; // Import useRouter for navigation
 
 export default function Introduction() {
   const [selectedSector, setSelectedSector] = useState(null); // Track selected sector
   const [name, setName] = useState("Guest"); // Default to "Guest"
   const [workDesc, setWorkDesc] = useState(""); // State for work description
+  const router = useRouter(); // Initialize the router
 
   // Access localStorage only on the client side
   useEffect(() => {
@@ -15,6 +17,50 @@ export default function Introduction() {
       setWorkDesc(userData?.workDesc || ""); // Fallback to empty string if work description is not available
     }
   }, []);
+
+  // Handle Next Button Click
+  const handleNextClick = async () => {
+    // Validate required fields
+    if (!name || !selectedSector || !workDesc) {
+      alert("Please fill out all fields");
+      return;
+    }
+
+    // Retrieve existing userData from localStorage
+    const existingUserData = JSON.parse(localStorage.getItem("userData")) || {};
+
+    // Update userData with new values
+    const updatedUserData = {
+      ...existingUserData, // Spread existing data
+      companySector: selectedSector, // Add selected sector
+      jobDesc: workDesc, // Add work description
+    };
+
+    try {
+      // Save updated userData to localStorage
+      localStorage.setItem("userData", JSON.stringify(updatedUserData));
+      console.log("Updated user data saved to localStorage:", updatedUserData);
+
+      // Send updated data to the API route
+      const response = await fetch("/api/saveUser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedUserData),
+      });
+
+      if (response.ok) {
+        console.log("User data saved successfully");
+        // Redirect to the quiz section
+        router.push("/quiz");
+      } else {
+        console.error("Failed to save user data");
+      }
+    } catch (error) {
+      console.error("Error saving user data:", error);
+    }
+  };
 
   return (
     <div
@@ -39,20 +85,20 @@ export default function Introduction() {
         />
 
         {/* Display the user's name here */}
-        <div className="absolute top-14 md:top-8 left-1/2 transform -translate-x-1/2 text-center">
+        <div className="absolute top-14 md:top-14 lg:top-14 left-1/2 transform -translate-x-1/2 text-center">
           <img
             src="/introductionCon/nameLabel.png"
             alt="Name Label"
-            className="w-[50px] sm:w-[100px] md:w-[120px] lg:w-[180px] max-w-none" // Responsive width
+            className="w-[50px] sm:w-[60px] md:w-[60px] lg:w-[60px] max-w-none" // Responsive width
           />
           {/* User's name */}
-          <div className="absolute top-[16px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#4D7DBF] font-bold text-4xl sm:text-xl md:text-2xl lg:text-3xl">
+          <div className="absolute top-[16px] md:top-[16px] lg:top-[16px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#4D7DBF] font-bold text-4xl sm:text-xl md:text-4xl lg:text-4xl">
             {name}
           </div>
         </div>
 
         {/* Work Description Input Overlay */}
-        <div className="absolute top-[234px] md:top-[220px] lg:top-[240px] left-1/2 transform -translate-x-1/2 w-[280px] sm:w-[280px] md:w-[300px] lg:w-[360px] h-[60px]">
+        <div className="absolute top-[234px] md:top-[260px] lg:top-[320px] left-1/2 transform -translate-x-1/2 w-[280px] sm:w-[280px] md:w-[300px] lg:w-[360px] h-[60px]">
           {/* Input Element Overlay */}
           <input
             type="text"
@@ -65,8 +111,8 @@ export default function Introduction() {
         </div>
 
         {/* All of the sector here */}
-        <div className="absolute top-[410px] left-[150px] transform -translate-x-1/2 -translate-y-1/2 w-[240px] sm:w-[280px] md:w-[300px]">
-          <div className="grid grid-cols-[70px_80px_0px] gap-4">
+        <div className="absolute top-[410px] md:top-[450px] lg:top-[540px] left-[150px] md:left-[180px] lg:left-[180px] transform -translate-x-1/2 -translate-y-1/2 w-[240px] sm:w-[280px] md:w-[300px]">
+          <div className="grid grid-cols-[70px_80px_0px] md:grid-cols-[80px_90px_0px] lg:grid-cols-[100px_110px_0px] gap-4">
             {/* First row with 3 columns */}
             {["tech", "finance", "consumerable"].map((sector) => (
               <div
@@ -81,13 +127,13 @@ export default function Introduction() {
                 <img
                   src={`/introductionCon/${sector}.png`}
                   alt={sector}
-                  className="h-9 w-auto max-w-none"
+                  className="h-9 md:h-10 lg:h-12 w-auto max-w-none"
                 />
               </div>
             ))}
           </div>
 
-          <div className="grid grid-cols-[20px_60px_30px] gap-16 mt-4">
+          <div className="grid grid-cols-[20px_60px_30px] md:grid-cols-[34px_74px_0px] lg:grid-cols-[50px_100px_0px] gap-16 mt-4">
             {/* Second row with 3 columns */}
             {["labor", "industrial", "mineral"].map((sector) => (
               <div
@@ -102,13 +148,13 @@ export default function Introduction() {
                 <img
                   src={`/introductionCon/${sector}.png`}
                   alt={sector}
-                  className="h-9 w-auto max-w-none"
+                  className="h-9 md:h-10 lg:h-12 w-auto max-w-none"
                 />
               </div>
             ))}
           </div>
 
-          <div className="grid grid-cols-[110px_0px] gap-0 mt-4">
+          <div className="grid grid-cols-[110px_0px] md:grid-cols-[120px_0px] lg:grid-cols-[140px_0px] gap-0 mt-4">
             {/* Third row with 2 columns */}
             {["realEstate", "agriculture"].map((sector) => (
               <div
@@ -123,7 +169,7 @@ export default function Introduction() {
                 <img
                   src={`/introductionCon/${sector}.png`}
                   alt={sector}
-                  className="h-9 w-auto max-w-none"
+                  className="h-9 md:h-10 lg:h-12 w-auto max-w-none"
                 />
               </div>
             ))}
@@ -132,11 +178,14 @@ export default function Introduction() {
       </div>
 
       {/* Next Button */}
-      <div className="absolute bottom-8 md:bottom-12 lg:bottom-16 left-1/2 transform -translate-x-1/2 z-30">
+      <div
+        className="absolute bottom-8 md:bottom-8 lg:bottom-10 left-1/2 transform -translate-x-1/2 z-30 cursor-pointer hover:opacity-80 transition-opacity"
+        onClick={handleNextClick} // Add onClick handler
+      >
         <img
           src="/introduction/Next2.svg"
           alt="Next Button"
-          className="w-16 sm:w-20 md:w-36 lg:w-36 cursor-pointer hover:opacity-80 transition-opacity" // Responsive width
+          className="w-16 sm:w-20 md:w-32 lg:w-36" // Responsive width
         />
       </div>
 
