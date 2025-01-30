@@ -119,6 +119,6 @@ body {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  row-gap: 12px; /* Adjust this value to decrease the row gap */
-  column-gap: 0px; /* Adjust this value to decrease the column gap */
+  row-gap: 8px; /* Adjust this value to decrease the row gap */
+  column-gap: 8px; /* Adjust this value to decrease the column gap */
 }
