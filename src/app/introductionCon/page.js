@@ -53,11 +53,13 @@ export default function Introduction() {
       if (response.ok) {
         console.log("User data saved successfully");
         // Redirect to the quiz section
-        router.push("/quiz");
+        router.push("/startquiz");
       } else {
-        console.error("Failed to save user data");
+        router.push("/startquiz");
+        // console.error("Failed to save user data");
       }
     } catch (error) {
+      router.push("/startquiz");
       console.error("Error saving user data:", error);
     }
   };
