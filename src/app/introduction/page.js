@@ -1,24 +1,28 @@
 "use client"; // Mark this as a Client Component (required for useState and interactivity)
 
 import { useState } from "react";
-import { useRouter } from 'next/navigation'; // For `app` directory
+import { useRouter } from "next/navigation"; // For `app` directory
 
 export default function Introduction() {
   const [name, setName] = useState(""); // Track user's name
   const [selectedGender, setSelectedGender] = useState(null); // Track selected gender
   const [selectedAge, setSelectedAge] = useState(null); // Track selected age
   const [selectedOccupation, setSelectedOccupation] = useState(null); // Track selected occupation
+  const [isNextClicked, setIsNextClicked] = useState(false); // Track if the Next button is clicked
 
   const router = useRouter(); // Initialize useRouter
 
   // Function to handle the "Next" button click
   const handleNextClick = async () => {
+    setIsNextClicked(true); // Set the button to active state
+    setTimeout(() => setIsNextClicked(false), 200); // Reset after 200ms
+
     // Validate required fields
     if (!name || !selectedGender || !selectedAge || !selectedOccupation) {
       alert("Please fill out all fields");
       return;
     }
-  
+
     // Prepare data to send to the API
     const userData = {
       name,
@@ -28,7 +32,7 @@ export default function Introduction() {
       jobDesc: selectedOccupation === "student" ? null : null, // Leave as null for non-students
       companySector: selectedOccupation === "student" ? null : null, // Leave as null for non-students
     };
-  
+
     if (selectedOccupation === "student") {
       try {
         // Send data to the API route
@@ -39,7 +43,7 @@ export default function Introduction() {
           },
           body: JSON.stringify(userData),
         });
-  
+
         const data = await response.json(); // Parse the response body
         if (response.ok) {
           console.log("User data saved successfully:", data);
@@ -117,18 +121,18 @@ export default function Introduction() {
         </div>
 
         {/* Gender Icons */}
-        <div className="absolute top-28 md:top-32 lg:top-40 left-1/2 lg:left-[220px] transform -translate-x-1/2 flex justify-between w-[240px] sm:w-[280px] md:w-[300px]">
+        <div className="absolute top-28 md:top-32 lg:top-40 left-[170px] md:left-[200px] lg:left-[214px] transform -translate-x-1/2 flex justify-between w-[240px] sm:w-[280px] md:w-[300px] gap-2">
           {/* Male Icon */}
           <div
-            className={`cursor-pointer transition-transform ${
-              selectedGender === "male"
-                ? "scale-110 drop-shadow-lg"
-                : "opacity-80 hover:opacity-100"
-            }`}
+            className="cursor-pointer"
             onClick={() => setSelectedGender("male")}
           >
             <img
-              src="/introduction/male.png"
+              src={
+                selectedGender === "male"
+                  ? "/introduction/maleActive.png"
+                  : "/introduction/male.png"
+              }
               alt="Male"
               className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none" // Responsive width
             />
@@ -136,15 +140,15 @@ export default function Introduction() {
 
           {/* Female Icon */}
           <div
-            className={`cursor-pointer transition-transform ${
-              selectedGender === "female"
-                ? "scale-110 drop-shadow-lg"
-                : "opacity-80 hover:opacity-100"
-            }`}
+            className="cursor-pointer"
             onClick={() => setSelectedGender("female")}
           >
             <img
-              src="/introduction/female.png"
+              src={
+                selectedGender === "female"
+                  ? "/introduction/femaleActive.png"
+                  : "/introduction/female.png"
+              }
               alt="Female"
               className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none" // Responsive width
             />
@@ -152,15 +156,15 @@ export default function Introduction() {
 
           {/* LGBTQ Icon */}
           <div
-            className={`cursor-pointer transition-transform ${
-              selectedGender === "lgbtq"
-                ? "scale-110 drop-shadow-lg"
-                : "opacity-80 hover:opacity-100"
-            }`}
+            className="cursor-pointer"
             onClick={() => setSelectedGender("lgbtq")}
           >
             <img
-              src="/introduction/LGBTQ.png"
+              src={
+                selectedGender === "lgbtq"
+                  ? "/introduction/LGBTQActive.png"
+                  : "/introduction/LGBTQ.png"
+              }
               alt="LGBTQ"
               className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none" // Responsive width
             />
@@ -177,21 +181,21 @@ export default function Introduction() {
         </div>
 
         {/* Age Range Icons */}
-        <div className="absolute top-52 md:top-60 lg:top-72 left-1/2 transform -translate-x-1/2 w-[240px] sm:w-[280px] md:w-[300px]">
+        <div className="absolute top-52 md:top-60 lg:top-[280px] left-1/2 transform -translate-x-1/2 w-[240px] sm:w-[280px] md:w-[300px]">
           {/* First Row */}
-          <div className="flex justify-center space-x-2 sm:space-x-4 mb-2 sm:mb-4">
+          <div className="flex justify-center space-x-2 sm:space-x-4 md:space-x-4 mb-2 sm:mb-4 md:mb-2 lg:mb-2">
             {["0-12", "13-28", "29-44"].map((age) => (
               <div
                 key={age}
-                className={`cursor-pointer transition-transform ${
-                  selectedAge === age
-                    ? "scale-110 drop-shadow-lg"
-                    : "opacity-80 hover:opacity-100"
-                }`}
+                className="cursor-pointer"
                 onClick={() => setSelectedAge(age)}
               >
                 <img
-                  src={`/introduction/${age}PNG.png`}
+                  src={`/introduction/${
+                    selectedAge === age
+                      ? `${age}PNGActive.png`
+                      : `${age}PNG.png`
+                  }`}
                   alt={age}
                   className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none" // Responsive width
                 />
@@ -204,15 +208,15 @@ export default function Introduction() {
             {["45-60", "61-79"].map((age) => (
               <div
                 key={age}
-                className={`cursor-pointer transition-transform ${
-                  selectedAge === age
-                    ? "scale-110 drop-shadow-lg"
-                    : "opacity-80 hover:opacity-100"
-                }`}
+                className="cursor-pointer"
                 onClick={() => setSelectedAge(age)}
               >
                 <img
-                  src={`/introduction/${age}PNG.PNG`}
+                  src={`/introduction/${
+                    selectedAge === age
+                      ? `${age}PNGActive.png`
+                      : `${age}PNG.png`
+                  }`}
                   alt={age}
                   className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none" // Responsive width
                 />
@@ -231,7 +235,7 @@ export default function Introduction() {
         </div>
 
         {/* Occupation Icons */}
-        <div className="absolute top-[380px] md:top-[400px] lg:top-[480px] left-[135px] md:left-[170px] lg:left-[180px] transform -translate-x-1/2 w-[240px] sm:w-[280px] md:w-[300px]">
+        <div className="absolute top-[360px] md:top-[400px] lg:top-[480px] left-[150px] md:left-[170px] lg:left-[180px] transform -translate-x-1/2 w-[240px] sm:w-[280px] md:w-[300px]">
           <div className="grid-container">
             {[
               "student",
@@ -243,17 +247,17 @@ export default function Introduction() {
             ].map((occupation) => (
               <div
                 key={occupation}
-                className={`cursor-pointer transition-transform ${
-                  selectedOccupation === occupation
-                    ? "scale-110 drop-shadow-lg"
-                    : "opacity-80 hover:opacity-100"
-                }`}
+                className="cursor-pointer"
                 onClick={() => setSelectedOccupation(occupation)}
               >
                 <img
-                  src={`/introduction/${occupation}.png`}
+                  src={
+                    selectedOccupation === occupation
+                      ? `/introduction/${occupation}Active.png`
+                      : `/introduction/${occupation}.png`
+                  }
                   alt={occupation}
-                  className="w-40 sm:w-28 md:w-44 lg:w-52 max-w-none" // Responsive width
+                  className="w-36 sm:w-28 md:w-44 lg:w-52 max-w-none" // Responsive width
                 />
               </div>
             ))}
@@ -262,12 +266,16 @@ export default function Introduction() {
       </div>
 
       {/* Next Button */}
-      <div className="absolute bottom-8 md:bottom-12 lg:bottom-16 left-1/2 transform -translate-x-1/2 z-30">
+      <div className="absolute bottom-10 md:bottom-12 lg:bottom-16 left-1/2 transform -translate-x-1/2 z-30">
         <div onClick={handleNextClick}>
           <img
-            src="/introduction/Next2.svg"
+            src={
+              isNextClicked
+                ? "/introduction/nextButtonActive.png"
+                : "/introduction/Next2.svg"
+            }
             alt="Next Button"
-            className="w-16 sm:w-20 md:w-36 lg:w-36 cursor-pointer hover:opacity-80 transition-opacity" // Responsive width
+            className="w-20 sm:w-20 md:w-28 lg:w-36 cursor-pointer" // Responsive width
           />
         </div>
       </div>
