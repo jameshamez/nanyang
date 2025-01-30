@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="574966ff-fbd3-49af-85bc-af254879a8bb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/image/bar1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/bar2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/bar3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/bar4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/bar5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/bgquiz.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/footer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/next1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/tree.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/tree2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/tree3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/tree4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/tree5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Ecoinsight/page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Ecoscore1/page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Ecoscore3/page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Ecoscore4/page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/quiz1/page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/quiz2/page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/quiz3/page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/quiz4/page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/quiz5/page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/startquiz/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_1_2568_19_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_1_2568_19_55__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/introductionCon/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/introductionCon/page.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="UAT" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\php8.1.0\php.exe" />
+  <component name="ProjectId" id="2rzHi9UPxfsVo6InRJM5BdQy2Ou" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "nanyangk",
+    "last_opened_file_path": "C:/Users/natthapongpho/my-app/public/image",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\natthapongpho\my-app\public\image" />
+      <recent name="C:\Users\natthapongpho\my-app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\natthapongpho\my-app\public\image" />
+      <recent name="C:\Users\natthapongpho\my-app\public" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="574966ff-fbd3-49af-85bc-af254879a8bb" name="Changes" comment="" />
+      <created>1737555109976</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1737555109976</updated>
+      <workItem from="1737555112338" duration="1042000" />
+      <workItem from="1737637766418" duration="4207000" />
+      <workItem from="1737864190767" duration="25522000" />
+      <workItem from="1737948024756" duration="202000" />
+      <workItem from="1738124169192" duration="2919000" />
+      <workItem from="1738129287509" duration="13613000" />
+      <workItem from="1738241615763" duration="38000" />
+      <workItem from="1738241702438" duration="990000" />
+    </task>
+    <task id="LOCAL-00001" summary="james Update">
+      <option name="closed" value="true" />
+      <created>1737910039492</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1737910039492</updated>
+    </task>
+    <task id="LOCAL-00002" summary="james Update">
+      <option name="closed" value="true" />
+      <created>1737947774994</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1737947774994</updated>
+    </task>
+    <task id="LOCAL-00003" summary="james Update">
+      <option name="closed" value="true" />
+      <created>1738168971843</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738168971843</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="nanyangk" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="james Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="james Update" />
+  </component>
+</project>
