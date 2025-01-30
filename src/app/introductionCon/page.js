@@ -7,6 +7,7 @@ export default function Introduction() {
   const [selectedSector, setSelectedSector] = useState(null); // Track selected sector
   const [name, setName] = useState("Guest"); // Default to "Guest"
   const [workDesc, setWorkDesc] = useState(""); // State for work description
+  const [isNextClicked, setIsNextClicked] = useState(false); // Track if the Next button is clicked
   const router = useRouter(); // Initialize the router
 
   // Access localStorage only on the client side
@@ -20,6 +21,9 @@ export default function Introduction() {
 
   // Handle Next Button Click
   const handleNextClick = async () => {
+    setIsNextClicked(true); // Set the button to active state
+    setTimeout(() => setIsNextClicked(false), 200); // Reset after 200ms
+
     // Validate required fields
     if (!name || !selectedSector || !workDesc) {
       alert("Please fill out all fields");
@@ -117,15 +121,15 @@ export default function Introduction() {
             {["tech", "finance", "consumerable"].map((sector) => (
               <div
                 key={sector}
-                className={`cursor-pointer transition-transform ${
-                  selectedSector === sector
-                    ? "scale-110 drop-shadow-lg"
-                    : "opacity-80 hover:opacity-100"
-                }`}
+                className="cursor-pointer"
                 onClick={() => setSelectedSector(sector)}
               >
                 <img
-                  src={`/introductionCon/${sector}.png`}
+                  src={`/introductionCon/${
+                    selectedSector === sector
+                      ? `${sector}Active.png`
+                      : `${sector}.png`
+                  }`}
                   alt={sector}
                   className="h-9 md:h-10 lg:h-12 w-auto max-w-none"
                 />
@@ -138,15 +142,15 @@ export default function Introduction() {
             {["labor", "industrial", "mineral"].map((sector) => (
               <div
                 key={sector}
-                className={`cursor-pointer transition-transform ${
-                  selectedSector === sector
-                    ? "scale-110 drop-shadow-lg"
-                    : "opacity-80 hover:opacity-100"
-                }`}
+                className="cursor-pointer"
                 onClick={() => setSelectedSector(sector)}
               >
                 <img
-                  src={`/introductionCon/${sector}.png`}
+                  src={`/introductionCon/${
+                    selectedSector === sector
+                      ? `${sector}Active.png`
+                      : `${sector}.png`
+                  }`}
                   alt={sector}
                   className="h-9 md:h-10 lg:h-12 w-auto max-w-none"
                 />
@@ -159,15 +163,15 @@ export default function Introduction() {
             {["realEstate", "agriculture"].map((sector) => (
               <div
                 key={sector}
-                className={`cursor-pointer transition-transform ${
-                  selectedSector === sector
-                    ? "scale-110 drop-shadow-lg"
-                    : "opacity-80 hover:opacity-100"
-                }`}
+                className="cursor-pointer"
                 onClick={() => setSelectedSector(sector)}
               >
                 <img
-                  src={`/introductionCon/${sector}.png`}
+                  src={`/introductionCon/${
+                    selectedSector === sector
+                      ? `${sector}Active.png`
+                      : `${sector}.png`
+                  }`}
                   alt={sector}
                   className="h-9 md:h-10 lg:h-12 w-auto max-w-none"
                 />
@@ -179,11 +183,15 @@ export default function Introduction() {
 
       {/* Next Button */}
       <div
-        className="absolute bottom-8 md:bottom-8 lg:bottom-10 left-1/2 transform -translate-x-1/2 z-30 cursor-pointer hover:opacity-80 transition-opacity"
+        className="absolute bottom-10 md:bottom-8 lg:bottom-10 left-1/2 transform -translate-x-1/2 z-30 cursor-pointer hover:opacity-80 transition-opacity"
         onClick={handleNextClick} // Add onClick handler
       >
         <img
-          src="/introduction/Next2.svg"
+          src={
+            isNextClicked
+              ? "/introductionCon/nextButtonActive.png"
+              : "/introductionCon/Next3-CF.png"
+          }
           alt="Next Button"
           className="w-16 sm:w-20 md:w-32 lg:w-36" // Responsive width
         />

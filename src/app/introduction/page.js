@@ -275,7 +275,7 @@ export default function Introduction() {
                 : "/introduction/Next2.svg"
             }
             alt="Next Button"
-            className="w-20 sm:w-20 md:w-28 lg:w-36 cursor-pointer" // Responsive width
+            className="w-16 sm:w-20 md:w-28 lg:w-36 cursor-pointer" // Responsive width
           />
         </div>
       </div>
