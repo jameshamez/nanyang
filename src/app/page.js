@@ -1,4 +1,18 @@
+"use client";
+
+import { useState } from 'react';
+
 export default function Home() {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(true);
+    // You can add a timeout to reset the state after a short delay to simulate the press effect
+    setTimeout(() => {
+      setIsClicked(false);
+    }, 200); // Adjust the delay as needed
+  };
+
   return (
     <div
       className="min-h-screen bg-cover bg-center relative overflow-hidden"
@@ -61,9 +75,10 @@ export default function Home() {
         <a
           href="/introduction"
           className="inline-block hover:opacity-80 transition-opacity mt-16 md:mt-20 lg:mt-24 hover:scale-110 transition-transform duration-300 z-10"
+          onClick={handleClick}
         >
           <img
-            src="/index/1-Next.svg"
+            src={isClicked ? "/index/nextButtonActive.png" : "/index/1-Next.svg"}
             alt="Next"
             className="w-24 md:w-28 lg:w-32"
           />
