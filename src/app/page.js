@@ -87,7 +87,7 @@ export default function Home() {
 
       {/* Footer */}
       <img
-        src="/index/1-footer.svg"
+        src="/index/1-Footer.svg"
         alt="Footer"
         className="absolute bottom-0 left-0 w-full"
       />
