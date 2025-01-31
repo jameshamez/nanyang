@@ -87,11 +87,11 @@ export default function Introduction() {
         <img
           src="/introductionCon/Panel.png"
           alt="Introduction Panel"
-          className="w-[360px] sm:w-[360px] md:w-[400px] lg:w-[480px] max-w-none" // Responsive width
+          className="w-[320px] sm:w-[360px] md:w-[400px] lg:w-[480px] max-w-none" // Responsive width
         />
 
         {/* Display the user's name here */}
-        <div className="absolute top-14 md:top-14 lg:top-14 left-1/2 transform -translate-x-1/2 text-center">
+        <div className="absolute top-10 sm:top-14 md:top-14 lg:top-14 left-1/2 transform -translate-x-1/2 text-center">
           <img
             src="/introductionCon/nameLabel.png"
             alt="Name Label"
@@ -104,7 +104,7 @@ export default function Introduction() {
         </div>
 
         {/* Work Description Input Overlay */}
-        <div className="absolute top-[234px] md:top-[260px] lg:top-[320px] left-1/2 transform -translate-x-1/2 w-[280px] sm:w-[280px] md:w-[300px] lg:w-[360px] h-[60px]">
+        <div className="absolute top-[204px] sm:top-[234px] md:top-[260px] lg:top-[320px] left-1/2 transform -translate-x-1/2 w-[280px] sm:w-[280px] md:w-[300px] lg:w-[360px] h-[60px]">
           {/* Input Element Overlay */}
           <input
             type="text"
@@ -117,8 +117,8 @@ export default function Introduction() {
         </div>
 
         {/* All of the sector here */}
-        <div className="absolute top-[410px] md:top-[450px] lg:top-[540px] left-[150px] md:left-[180px] lg:left-[180px] transform -translate-x-1/2 -translate-y-1/2 w-[240px] sm:w-[280px] md:w-[300px]">
-          <div className="grid grid-cols-[70px_80px_0px] md:grid-cols-[80px_90px_0px] lg:grid-cols-[100px_110px_0px] gap-4">
+        <div className="absolute top-[380px] sm:top-[410px] md:top-[450px] lg:top-[540px] left-[130px] sm:left-[150px] md:left-[180px] lg:left-[180px] transform -translate-x-1/2 -translate-y-1/2 w-[240px] sm:w-[280px] md:w-[300px]">
+          <div className="grid grid-cols-[60px_78px_0px] sm:grid-cols-[70px_80px_0px] md:grid-cols-[80px_90px_0px] lg:grid-cols-[100px_110px_0px] gap-4">
             {/* First row with 3 columns */}
             {["tech", "finance", "consumerable"].map((sector) => (
               <div
@@ -139,7 +139,7 @@ export default function Introduction() {
             ))}
           </div>
 
-          <div className="grid grid-cols-[20px_60px_30px] md:grid-cols-[34px_74px_0px] lg:grid-cols-[50px_100px_0px] gap-16 mt-4">
+          <div className="grid grid-cols-[14px_64px_30px] sm:grid-cols-[20px_60px_30px] md:grid-cols-[34px_74px_0px] lg:grid-cols-[50px_100px_0px] gap-16 mt-4">
             {/* Second row with 3 columns */}
             {["labor", "industrial", "mineral"].map((sector) => (
               <div
@@ -160,7 +160,7 @@ export default function Introduction() {
             ))}
           </div>
 
-          <div className="grid grid-cols-[110px_0px] md:grid-cols-[120px_0px] lg:grid-cols-[140px_0px] gap-0 mt-4">
+          <div className="grid grid-cols-[112px_0px] sm:grid-cols-[110px_0px] md:grid-cols-[120px_0px] lg:grid-cols-[140px_0px] gap-0 mt-4">
             {/* Third row with 2 columns */}
             {["realEstate", "agriculture"].map((sector) => (
               <div
