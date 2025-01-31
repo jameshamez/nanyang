@@ -5,13 +5,10 @@ import { useRouter } from 'next/navigation';
 const kanit = Kanit({ subsets: ['thai'], weight: '700' });
 import { useState } from 'react';
 
-
-
-
-
 export default function QuizPage() {
-
     const router = useRouter();
+    const [selectedButton, setSelectedButton] = useState(null);
+
     const handleNextClick = (selectedButton) => {
         if (selectedButton !== null) {
             router.push("/quiz2");
@@ -19,17 +16,19 @@ export default function QuizPage() {
             alert("กรุณาเลือกคำตอบก่อน");
         }
     };
-    const [selectedButton, setSelectedButton] = useState(null);
+
     const handleButtonClick = (index) => {
         setSelectedButton(index);
     };
+
     return (
         <div
-            className={`flex flex-col items-center justify-center min-h-screen bg-blue-50 px-4 relative ${kanit.className}`} // ใช้ฟอนต์ Kanit
+            className={`flex flex-col items-center justify-center min-h-screen bg-blue-50 px-4 relative ${kanit.className}`}
             style={{
                 backgroundImage: "url(/image/bgquiz.png)",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
+                paddingBottom: 'calc(env(safe-area-inset-bottom) + 60px)', // เพิ่ม Safe Area และ padding เพิ่มเติม
             }}
         >
             {/* Top Bar with Image */}
@@ -48,10 +47,12 @@ export default function QuizPage() {
                     className="w-full h-full object-contain"
                 />
             </div>
+
+            {/* Question Section */}
             <div
                 className="absolute top-[15%] text-center w-full"
                 style={{
-                    transform: "translateY(-50%)", // ขยับให้สมดุล
+                    transform: "translateY(-50%)",
                 }}
             >
                 <h1
@@ -67,24 +68,27 @@ export default function QuizPage() {
                 </h1>
             </div>
 
-
-
-            {/* Question Section */}
-            <div className="space-y-4 sm:space-y-6 px-4 sm:px-6 md:px-8 lg:px-10"
-                 style={{
-                     transform: "translateY(-50%)", // ขยับให้สมดุล
-                 }}
+            {/* Answer Buttons */}
+            <div
+                className="space-y-4 sm:space-y-6 px-4 sm:px-6 md:px-8 lg:px-10"
+                style={{
+                    transform: "translateY(-50%)",
+                }}
             >
-                {[{
-                    text: "เอาไปวนใช้ใหม่ รีไซเคิลโลด!",
-                    bgColor: "#B5D08B",
-                }, {
-                    text: "ฝังดินให้ย่อยสลายเอง",
-                    bgColor: "#B5D08B",
-                }, {
-                    text: "ใช้เทคโนโลยีใหม่ๆ เพื่อลดเศษเส้นด้านที่เกิดขึ้นตั้งแต่แรก",
-                    bgColor: "#B5D08B",
-                }].map((button, index) => (
+                {[
+                    {
+                        text: "เอาไปวนใช้ใหม่ รีไซเคิลโลด!",
+                        bgColor: "#B5D08B",
+                    },
+                    {
+                        text: "ฝังดินให้ย่อยสลายเอง",
+                        bgColor: "#B5D08B",
+                    },
+                    {
+                        text: "ใช้เทคโนโลยีใหม่ๆ เพื่อลดเศษเส้นด้านที่เกิดขึ้นตั้งแต่แรก",
+                        bgColor: "#B5D08B",
+                    },
+                ].map((button, index) => (
                     <button
                         key={index}
                         onClick={() => handleButtonClick(index)}
@@ -96,7 +100,7 @@ export default function QuizPage() {
                             border: "4px solid #FFF7F0",
                             boxShadow: "0px 4px 0px 0px #0000001A",
                             backgroundColor: selectedButton === index ? "#606E56" : button.bgColor,
-                            color:selectedButton === index ? "#FFFFFF" : "#606E56",
+                            color: selectedButton === index ? "#FFFFFF" : "#606E56",
                             fontSize: "13px",
                         }}
                     >
@@ -119,7 +123,6 @@ export default function QuizPage() {
                 <img src="/image/drop.png" alt="หยดน้ำ" className="w-4 h-4" />
             </div>
 
-
             {/* Background Decoration */}
             <div
                 className="absolute flex justify-center"
@@ -141,7 +144,13 @@ export default function QuizPage() {
                 </div>
             </div>
 
-            <footer className="absolute bottom-0 w-full px-0 flex flex-col items-center">
+            {/* Footer with Safe Area */}
+            <footer
+                className="absolute bottom-0 w-full px-0 flex flex-col items-center"
+                style={{
+                    paddingBottom: 'calc(env(safe-area-inset-bottom) + 60px)', // เพิ่ม Safe Area และ padding เพิ่มเติม
+                }}
+            >
                 <button
                     onClick={() => handleNextClick(selectedButton)}
                     aria-label="Next"
@@ -161,23 +170,24 @@ export default function QuizPage() {
                     />
                 </div>
             </footer>
+
+            {/* CSS Animation */}
             <style jsx>{`
-              @keyframes drop {
-                0% {
-                  transform: translateY(0);
-                  opacity: 1;
-                }
-                100% {
-                  transform: translateY(50px);
-                  opacity: 0;
-                }
-              }
+        @keyframes drop {
+          0% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(50px);
+            opacity: 0;
+          }
+        }
 
-              .animate-drop {
-                animation: drop 1s infinite linear;
-              }
-            `}</style>
+        .animate-drop {
+          animation: drop 1s infinite linear;
+        }
+      `}</style>
         </div>
-
     );
 }
