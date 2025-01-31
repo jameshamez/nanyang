@@ -75,11 +75,11 @@ export default function Introduction() {
       style={{ backgroundImage: "url('/introduction/BG2.png')" }}
     >
       {/* Logo */}
-      <div className="absolute top-8 md:top-12 lg:top-16 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="absolute top-8 sm:top-8 md:top-12 lg:top-16 left-1/2 transform -translate-x-1/2 z-20">
         <img
           src="/introduction/logo2PNG.png"
           alt="Logo"
-          className="w-24 md:w-36 lg:w-48"
+          className="w-20 sm:24 md:w-36 lg:w-48"
         />
       </div>
 
@@ -88,25 +88,25 @@ export default function Introduction() {
         <img
           src="/introduction/introductionPanel.svg"
           alt="Introduction Panel"
-          className="w-[360px] sm:w-[360px] md:w-[400px] lg:w-[480px] max-w-none" // Responsive width
+          className="w-[320px] sm:w-[360px] md:w-[400px] lg:w-[480px] max-w-none" // Responsive width
         />
 
         {/* Name Label */}
-        <div className="absolute top-5 md:top-8 left-1/2 transform -translate-x-1/2">
+        <div className="absolute top-5 sm:top-5 md:top-8 left-1/2 transform -translate-x-1/2">
           <img
             src="/introduction/nameLabel.png"
             alt="Name Label"
-            className="w-[140px] sm:w-[100px] md:w-[120px] lg:w-[180px] max-w-none" // Responsive width
+            className="w-[100px] sm:w-[100px] md:w-[120px] lg:w-[180px] max-w-none" // Responsive width
           />
         </div>
 
         {/* Name Box */}
-        <div className="absolute top-16 md:top-20 lg:top-24 left-1/2 transform -translate-x-1/2">
+        <div className="absolute top-16 sm:top-16 md:top-20 lg:top-24 left-1/2 transform -translate-x-1/2">
           {/* Name Box Image */}
           <img
             src="/introduction/nameBox.png"
             alt="Name Box"
-            className="w-[280px] sm:w-[280px] md:w-[300px] lg:w-[360px] max-w-none" // Responsive width
+            className="w-[260px] sm:w-[280px] md:w-[300px] lg:w-[360px] max-w-none" // Responsive width
           />
 
           {/* Input Element Overlay */}
@@ -121,7 +121,7 @@ export default function Introduction() {
         </div>
 
         {/* Gender Icons */}
-        <div className="absolute top-28 md:top-32 lg:top-40 left-[170px] md:left-[200px] lg:left-[214px] transform -translate-x-1/2 flex justify-between w-[240px] sm:w-[280px] md:w-[300px] gap-2">
+        <div className="absolute top-28 sm:top-28 md:top-32 lg:top-40 left-[150px] sm:left-[170px] md:left-[200px] lg:left-[214px] transform -translate-x-1/2 flex sm:justify-between w-[240px] sm:w-[280px] md:w-[300px] gap-2">
           {/* Male Icon */}
           <div
             className="cursor-pointer"
@@ -172,16 +172,16 @@ export default function Introduction() {
         </div>
 
         {/* Age Label */}
-        <div className="absolute top-40 md:top-48 lg:top-56 left-1/2 transform -translate-x-1/2">
+        <div className="absolute top-40 sm:top-40 md:top-48 lg:top-56 left-1/2 transform -translate-x-1/2">
           <img
             src="/introduction/age.png"
             alt="Age"
-            className="w-[44px] sm:w-[40px] md:w-[48px] lg:w-[56px] max-w-none" // Responsive width
+            className="w-[36px] sm:w-[40px] md:w-[48px] lg:w-[56px] max-w-none" // Responsive width
           />
         </div>
 
         {/* Age Range Icons */}
-        <div className="absolute top-52 md:top-60 lg:top-[280px] left-1/2 transform -translate-x-1/2 w-[240px] sm:w-[280px] md:w-[300px]">
+        <div className="absolute top-48 sm:top-52 md:top-60 lg:top-[280px] left-1/2 transform -translate-x-1/2 w-[240px] sm:w-[280px] md:w-[300px]">
           {/* First Row */}
           <div className="flex justify-center space-x-2 sm:space-x-4 md:space-x-4 mb-2 sm:mb-4 md:mb-2 lg:mb-2">
             {["0-12", "13-28", "29-44"].map((age) => (
@@ -226,16 +226,16 @@ export default function Introduction() {
         </div>
 
         {/* Occupation Label */}
-        <div className="absolute top-[320px] md:top-[360px] lg:top-[420px] left-1/2 transform -translate-x-1/2">
+        <div className="absolute top-[310px] sm:top-[320px] md:top-[360px] lg:top-[420px] left-1/2 transform -translate-x-1/2">
           <img
             src="/introduction/occupation.png"
             alt="Occupation"
-            className="w-[140px] sm:w-[100px] md:w-[140px] lg:w-[160px] max-w-none" // Responsive width
+            className="w-[120px] sm:w-[100px] md:w-[140px] lg:w-[160px] max-w-none" // Responsive width
           />
         </div>
 
         {/* Occupation Icons */}
-        <div className="absolute top-[360px] md:top-[400px] lg:top-[480px] left-[150px] md:left-[170px] lg:left-[180px] transform -translate-x-1/2 w-[240px] sm:w-[280px] md:w-[300px]">
+        <div className="absolute top-[350px] sm:top-[360px] md:top-[400px] lg:top-[480px] left-[160px] sm:left-[150px] md:left-[184px] lg:left-[180px] transform -translate-x-1/2 w-[240px] sm:w-[280px] md:w-[300px]">
           <div className="grid-container">
             {[
               "student",
@@ -257,7 +257,7 @@ export default function Introduction() {
                       : `/introduction/${occupation}.png`
                   }
                   alt={occupation}
-                  className="w-36 sm:w-28 md:w-44 lg:w-52 max-w-none" // Responsive width
+                  className="w-28 sm:w-28 md:w-40 lg:w-52 max-w-none" // Responsive width
                 />
               </div>
             ))}
@@ -266,7 +266,7 @@ export default function Introduction() {
       </div>
 
       {/* Next Button */}
-      <div className="absolute bottom-10 md:bottom-12 lg:bottom-16 left-1/2 transform -translate-x-1/2 z-30">
+      <div className="absolute bottom-8 sm:bottom-10 md:bottom-12 lg:bottom-16 left-1/2 transform -translate-x-1/2 z-30">
         <div onClick={handleNextClick}>
           <img
             src={
