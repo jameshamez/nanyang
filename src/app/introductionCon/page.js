@@ -76,7 +76,7 @@ export default function Introduction() {
       {/* Logo */}
       <div className="absolute top-8 md:top-12 lg:top-16 left-1/2 transform -translate-x-1/2 z-20">
         <img
-          src="/introductionCon/logo3.png"
+          src="/introductionCon/Logo3.png"
           alt="Logo"
           className="w-24 md:w-36 lg:w-48"
         />
