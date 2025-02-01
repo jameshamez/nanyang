@@ -3,26 +3,72 @@ import { Kanit } from 'next/font/google';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 const kanit = Kanit({ subsets: ['thai'], weight: '700' });
-import { useState } from 'react';
-
-
-
+import {useEffect, useState} from 'react';
 
 
 export default function QuizPage() {
 
     const router = useRouter();
-    const handleNextClick = (selectedButton) => {
+    const [selectedButton, setSelectedButton] = useState(null);
+    const [userId, setUserId] = useState(null);
+    const [loadingUser, setLoadingUser] = useState(true); // ✅ สร้าง state เพื่อเช็คว่าโหลด `userId` เสร็จหรือยัง
+
+    // ✅ ดึง `_id` จาก Cookie และป้องกันการเรียก API ซ้ำ
+    useEffect(() => {
+        async function fetchUserId() {
+            try {
+                const res = await fetch("/api/getUser");
+                if (res.ok) {
+                    const data = await res.json();
+                    setUserId(data._id);
+                }
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            } finally {
+                setLoadingUser(false); // ✅ โหลดเสร็จแล้ว
+            }
+        }
+        fetchUserId();
+    }, []);
+
+    // ✅ ฟังก์ชันบันทึกคำตอบ
+    const handleButtonClick = async (index, answer) => {
+        if (!userId) {
+
+        }
+
+        setSelectedButton(index); // ✅ อัปเดต state ก่อนส่ง API
+
+        try {
+            const response = await fetch("/api/save-answer", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    user_id: userId,
+                    question_no: 4,
+                    answer,
+                }),
+            });
+
+            if (!response.ok) {
+                console.error("Failed to save answer");
+            }
+        } catch (error) {
+            console.error("Error saving answer:", error);
+        }
+    };
+
+    // ✅ ฟังก์ชันกดปุ่ม Next
+    const handleNextClick = () => {
         if (selectedButton !== null) {
             router.push("/quiz5");
         } else {
-            alert("Please select an option before proceeding.");
+            alert("กรุณาเลือกคำตอบก่อน");
         }
     };
-    const [selectedButton, setSelectedButton] = useState(null);
-    const handleButtonClick = (index) => {
-        setSelectedButton(index);
-    };
+
     return (
         <div
             className={`flex flex-col items-center justify-center min-h-screen bg-blue-50 px-4 relative ${kanit.className}`} // ใช้ฟอนต์ Kanit
@@ -79,16 +125,20 @@ export default function QuizPage() {
                 {[{
                     text: "เสื้อผ้าทำจากผ้ารีไซเคิล ใส่ใจโลกสุดๆ",
                     bgColor: "#B5D08B",
+                    answer:"A"
                 }, {
                     text: "เสื้อผ้าทำจากวัสดุที่ย่อยสลายได้",
                     bgColor: "#B5D08B",
+                    answer:"B"
                 }, {
                     text: "เสื้อผ้าผลิตด้วยเทคโนโลยีที่ลดทั้งน้ำและพลังงาน",
                     bgColor: "#B5D08B",
+                    answer:"C"
+
                 }].map((button, index) => (
                     <button
                         key={index}
-                        onClick={() => handleButtonClick(index)}
+                        onClick={() => handleButtonClick(index, button.answer)}
                         className="w-full h-[40px] px-4 py-2 font-medium"
                         style={{
                             width: "359px",

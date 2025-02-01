@@ -4,33 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="574966ff-fbd3-49af-85bc-af254879a8bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/image/bar1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/bar2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/bar3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/bar4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/bar5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/bgquiz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/footer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/next1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/tree.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/tree2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/tree3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/tree4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/tree5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Ecoinsight/page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Ecoscore1/page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Ecoscore3/page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Ecoscore4/page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/quiz1/page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/quiz2/page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/quiz3/page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/quiz4/page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/quiz5/page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/startquiz/page.js" afterDir="false" />
+    <list default="true" id="574966ff-fbd3-49af-85bc-af254879a8bb" name="Changes" comment="Fix goto quiz for student">
+      <change afterPath="$PROJECT_DIR$/src/pages/api/calculate-group.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/api/getGroups.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/api/getUser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/api/save-answer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_1_2568_19_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_1_2568_19_55__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mongodb.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mongodb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Ecoinsight/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Ecoinsight/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Ecoscore1/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Ecoscore1/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Ecoscore2/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Ecoscore2/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Ecoscore3/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Ecoscore3/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Ecoscore4/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Ecoscore4/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/introduction/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/introduction/page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/introductionCon/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/introductionCon/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quiz1/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quiz1/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quiz2/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quiz2/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quiz3/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quiz3/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quiz4/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quiz4/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quiz5/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quiz5/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/saveUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/saveUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/testConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/testConnection.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +48,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="UAT" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -69,12 +67,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "nanyangk",
-    "last_opened_file_path": "C:/Users/natthapongpho/my-app/public/image",
+    "last_opened_file_path": "C:/Users/natthapongpho/my-app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -104,6 +103,7 @@
       <workItem from="1738129287509" duration="13613000" />
       <workItem from="1738241615763" duration="38000" />
       <workItem from="1738241702438" duration="990000" />
+      <workItem from="1738333861910" duration="23316000" />
     </task>
     <task id="LOCAL-00001" summary="james Update">
       <option name="closed" value="true" />
@@ -129,7 +129,47 @@
       <option name="project" value="LOCAL" />
       <updated>1738168971843</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="james Update">
+      <option name="closed" value="true" />
+      <created>1738335201651</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1738335201651</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fix Footer">
+      <option name="closed" value="true" />
+      <created>1738336401457</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738336401457</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fix Footer">
+      <option name="closed" value="true" />
+      <created>1738336492991</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738336492991</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fix Footer">
+      <option name="closed" value="true" />
+      <created>1738337710163</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1738337710163</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fix goto quiz for student">
+      <option name="closed" value="true" />
+      <created>1738394149958</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1738394149958</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,7 +186,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="nanyangk" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -160,6 +200,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="james Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="james Update" />
+    <MESSAGE value="Fix Footer" />
+    <MESSAGE value="Fix goto quiz for student" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix goto quiz for student" />
   </component>
 </project>

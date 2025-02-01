@@ -3,26 +3,96 @@ import { Kanit } from 'next/font/google';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 const kanit = Kanit({ subsets: ['thai'], weight: '700' });
-import { useState } from 'react';
-
-
-
+import {useEffect, useState} from 'react';
 
 
 export default function QuizPage() {
 
     const router = useRouter();
-    const handleNextClick = (selectedButton) => {
-        if (selectedButton !== null) {
-            router.push("/Ecoscore1");
-        } else {
-            alert("Please select an option before proceeding.");
+    const [selectedButton, setSelectedButton] = useState(null);
+    const [userId, setUserId] = useState(null);
+    const [loadingUser, setLoadingUser] = useState(true); // ✅ สร้าง state เพื่อเช็คว่าโหลด `userId` เสร็จหรือยัง
+
+    // ✅ ดึง `_id` จาก Cookie และป้องกันการเรียก API ซ้ำ
+    useEffect(() => {
+        async function fetchUserId() {
+            try {
+                const res = await fetch("/api/getUser");
+                if (res.ok) {
+                    const data = await res.json();
+                    setUserId(data._id);
+                }
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            } finally {
+                setLoadingUser(false); // ✅ โหลดเสร็จแล้ว
+            }
+        }
+        fetchUserId();
+    }, []);
+
+    // ✅ ฟังก์ชันบันทึกคำตอบ
+    const handleButtonClick = async (index, answer) => {
+        if (!userId) {
+
+        }
+
+        setSelectedButton(index); // ✅ อัปเดต state ก่อนส่ง API
+
+        try {
+            const response = await fetch("/api/save-answer", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    user_id: userId,
+                    question_no: 5,
+                    answer,
+                }),
+            });
+
+            if (!response.ok) {
+                console.error("Failed to save answer");
+            }
+        } catch (error) {
+            console.error("Error saving answer:", error);
         }
     };
-    const [selectedButton, setSelectedButton] = useState(null);
-    const handleButtonClick = (index) => {
-        setSelectedButton(index);
+
+    // ✅ ฟังก์ชันกดปุ่ม Next
+    const handleNextClick = async () => {
+        if (selectedButton === null) {
+            alert("กรุณาเลือกคำตอบก่อน");
+            return;
+        }
+
+        if (!userId) {
+        }
+
+        try {
+            // ✅ 1. เรียก API คำนวณกลุ่ม
+            const response = await fetch("/api/calculate-group", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_id: userId }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("✅ User assigned to group:", data.targetPage);
+
+                // ✅ 2. นำทางไปหน้าที่เหมาะสม
+                router.push(data.targetPage);
+            } else {
+                console.error("❌ Failed to assign group");
+                alert("เกิดข้อผิดพลาดในการคำนวณ กรุณาลองใหม่");
+            }
+        } catch (error) {
+            console.error("❌ Error calculating group:", error);
+        }
     };
+
     return (
         <div
             className={`flex flex-col items-center justify-center min-h-screen bg-blue-50 px-4 relative ${kanit.className}`} // ใช้ฟอนต์ Kanit
@@ -78,16 +148,19 @@ export default function QuizPage() {
                 {[{
                     text: "ส่งคืนโรงงานให้รีไซเคิล",
                     bgColor: "#B5D08B",
+                    answer: "A",
                 }, {
                     text: "ฝังไว้ในดินให้ธรรมชาติจัดการ",
                     bgColor: "#B5D08B",
+                    answer: "B",
                 }, {
                     text: "ออกแบบให้เสื้อผ้ามีอายุการใช้งานได้นานที่สุดก่อนส่งต่อ",
                     bgColor: "#B5D08B",
+                    answer: "C",
                 }].map((button, index) => (
                     <button
                         key={index}
-                        onClick={() => handleButtonClick(index)}
+                        onClick={() => handleButtonClick(index, button.answer)}
                         className="w-full h-[40px] px-4 py-2 font-medium"
                         style={{
                             width: "359px",

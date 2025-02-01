@@ -16,7 +16,7 @@ export default function QuizPage() {
         if (selectedButton !== null) {
             router.push("/Ecoinsight");
         } else {
-            alert("Please select an option before proceeding.");
+            router.push("/Ecoinsight");
         }
     };
     const [selectedButton, setSelectedButton] = useState(null);
@@ -37,7 +37,7 @@ export default function QuizPage() {
                 {/* ECO TYPE INSIGHT Button */}
                 <button
                     className="w-[196px] h-[60px] flex justify-center items-center"
-                    onClick={() => console.log('Navigate to eco-type-insight')}
+                    onClick={() => handleNextClick(selectedButton)}
                 >
                     <img
                         src="/image/buttoneco.png"

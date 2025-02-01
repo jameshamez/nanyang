@@ -48,7 +48,7 @@ export default function Introduction() {
         if (response.ok) {
           console.log("User data saved successfully:", data);
           // Redirect to the quiz section
-          router.push("/quiz");
+          router.push("/startquiz");
         } else {
           console.error("Failed to save user data:", data.message);
         }
