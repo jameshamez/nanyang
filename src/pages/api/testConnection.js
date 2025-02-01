@@ -1,22 +1,18 @@
-import clientPromise from "../../../lib/mongodb";
+import { MongoClient } from "mongodb";
 
 export default async function handler(req, res) {
   try {
-    const client = await clientPromise;
-    const db = client.db("nanyang"); // Replace with your database name
+    const client = new MongoClient(process.env.MONGODB_URI);
+    await client.connect();
+    const db = client.db("nanyang");
+    const collection = db.collection("test");
 
-    // Test inserting a document
-    const result = await db.collection("test").insertOne({
-      message: "Hello, MongoDB!",
-      timestamp: new Date(),
-    });
+    // ลองเพิ่มข้อมูลทดสอบ
+    const result = await collection.insertOne({ message: "Hello, MongoDB!", createdAt: new Date() });
 
-    // Send a success response
-    res.status(200).json({ message: "Connection successful!", result });
+    res.status(200).json({ message: "✅ MongoDB Connected Successfully!", result });
   } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
-
-    // Send an error response
+    console.error("❌ Connection Failed:", error);
     res.status(500).json({ message: "Failed to connect to MongoDB", error: error.message });
   }
 }

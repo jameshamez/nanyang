@@ -59,12 +59,13 @@ export default function Introduction() {
         // Redirect to the quiz section
         router.push("/startquiz");
       } else {
-        router.push("/startquiz");
-        // console.error("Failed to save user data");
+        // router.push("/startquiz");
+        console.error("Failed to save user data");
       }
     } catch (error) {
-      router.push("/startquiz");
-      console.error("Error saving user data:", error);
+      // router.push("/startquiz");
+      console.error('Error saving user:', error);
+      response.status(500).json({ message: 'Internal server error', error: respons?.message });
     }
   };
 
