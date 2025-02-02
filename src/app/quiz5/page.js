@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 const kanit = Kanit({ subsets: ['thai'], weight: '700' });
 import {useEffect, useState} from 'react';
 import {motion} from "framer-motion";
+import Cookies from "js-cookie";
 
 
 export default function QuizPage() {
@@ -93,6 +94,13 @@ export default function QuizPage() {
             console.error("❌ Error calculating group:", error);
         }
     };
+    const [isEnglish, setIsEnglish] = useState(false);
+
+
+    useEffect(() => {
+        const language = Cookies.get("language");
+        setIsEnglish(language === "en");
+    }, []);
 
     return (
         <div
@@ -126,7 +134,7 @@ export default function QuizPage() {
                 }}
             >
                 <img
-                    src="/image/q5.png" // 🔹 เปลี่ยนเป็น Path ของ PNG
+                    src={isEnglish ? "/image/q5EN.png" : "/image/q5.png"} // ✅ เปลี่ยนรูปตาม isEnglish
                     alt="คำถามที่ 1"
                     className="mx-auto h-auto"
                 />
@@ -142,9 +150,9 @@ export default function QuizPage() {
                 }}
             >
                 {[
-                    { img: "/image/5optionA.png", imgSelected: "/image/5optionA_selected.png", answer: "A" },
-                    { img: "/image/5optionB.png", imgSelected: "/image/5optionB_selected.png", answer: "B" },
-                    { img: "/image/5optionC.png", imgSelected: "/image/5optionC_selected.png", answer: "C" }
+                    { img: isEnglish ? "/image/5optionA_EN.png" : "/image/5optionA.png", imgSelected: isEnglish ? "/image/5optionA_selected_EN.png" : "/image/5optionA_selected.png", answer: "A" },
+                    { img: isEnglish ? "/image/5optionB_EN.png" : "/image/5optionB.png", imgSelected: isEnglish ? "/image/5optionB_selected_EN.png" : "/image/5optionB_selected.png", answer: "B" },
+                    { img: isEnglish ? "/image/5optionC_EN.png" : "/image/5optionC.png", imgSelected: isEnglish ? "/image/5optionC_selected_EN.png" : "/image/5optionC_selected.png", answer: "C" }
                 ].map((button, index) => (
                     <motion.img
                         key={index}

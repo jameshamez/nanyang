@@ -1,7 +1,8 @@
 "use client";
 import { Kanit } from "next/font/google";
 import { useRouter } from "next/navigation"; // ✅ ใช้ useRouter แทน useNavigate()
-import { useState } from "react";
+import {useEffect, useState} from "react";
+import Cookies from "js-cookie";
 
 const kanit = Kanit({ subsets: ["thai"], weight: "700" });
 
@@ -20,12 +21,19 @@ export default function QuizPage() {
     const handleButtonClick = (index) => {
         setSelectedButton(index);
     };
+    const [isEnglish, setIsEnglish] = useState(false);
+
+    useEffect(() => {
+        const language = Cookies.get("language");
+        setIsEnglish(language === "en");
+    }, []);
+
 
     return (
         <div
             className="flex flex-col items-center justify-center min-h-screen bg-blue-50 px-4 relative overflow-hidden"
             style={{
-                backgroundImage: "url(/image/startquiz.png)",
+                backgroundImage: `url(${isEnglish ? "/image/startquizEN.jpg" : "/image/startquiz.png"})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}

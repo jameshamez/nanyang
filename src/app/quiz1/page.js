@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 const kanit = Kanit({ subsets: ['thai'], weight: '700' });
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Cookies from "js-cookie";
 
 export default function QuizPage() {
 
@@ -62,6 +63,14 @@ export default function QuizPage() {
             console.error("Error saving answer:", error);
         }
     };
+    const [isEnglish, setIsEnglish] = useState(false);
+
+
+    useEffect(() => {
+        const language = Cookies.get("language");
+        setIsEnglish(language === "en");
+    }, []);
+
     return (
         <div
             className={`flex flex-col items-center justify-center min-h-screen bg-blue-50 px-4 relative ${kanit.className}`} // ใช้ฟอนต์ Kanit
@@ -94,7 +103,7 @@ export default function QuizPage() {
                 }}
             >
                 <img
-                    src="/image/q1.png" // 🔹 เปลี่ยนเป็น Path ของ PNG
+                    src={isEnglish ? "/image/q1EN.png" : "/image/q1.png"} // ✅ เปลี่ยนรูปตาม isEnglish
                     alt="คำถามที่ 1"
                     className="mx-auto h-auto"
                 />
@@ -110,9 +119,9 @@ export default function QuizPage() {
                 }}
             >
                 {[
-                    { img: "/image/1optionA.png", imgSelected: "/image/1optionA_selected.png", answer: "A" },
-                    { img: "/image/1optionB.png", imgSelected: "/image/1optionB_selected.png", answer: "B" },
-                    { img: "/image/1optionC.png", imgSelected: "/image/1optionC_selected.png", answer: "C" }
+                    { img:isEnglish ? "/image/1optionA_en.png" : "/image/1optionA.png",  imgSelected: isEnglish ? "/image/1optionA_selected_en.png" : "/image/1optionA_selected.png", answer: "A" },
+                    { img: isEnglish ? "/image/1optionB_en.png" : "/image/1optionB.png", imgSelected: isEnglish ? "/image/1optionB_selected_en.png" : "/image/1optionB_selected.png" , answer: "B" },
+                    { img: isEnglish ? "/image/1optionC_en.png" : "/image/1optionC.png", imgSelected: isEnglish ? "/image/1optionC_selected_en.png" : "/image/1optionC_selected.png", answer: "C" }
                 ].map((button, index) => (
                     <motion.img
                         key={index}
