@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 export default function QuizPage() {
 
+
     const router = useRouter();
     const handleNextClick = (selectedButton) => {
         if (selectedButton !== null) {
