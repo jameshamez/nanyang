@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 const kanit = Kanit({ subsets: ['thai'], weight: '700' });
 import { useState, useEffect } from "react";
+import {motion} from "framer-motion";
 
 
 export default function QuizPage() {
@@ -95,65 +96,43 @@ export default function QuizPage() {
                 />
             </div>
             <div
-                className="absolute top-[15%] text-center w-full"
+                className="absolute top-[20%] text-center w-full"
                 style={{
                     transform: "translateY(-50%)", // ขยับให้สมดุล
                 }}
             >
-                <h1
-                    className={`text-2xl font-bold leading-[1.5] ${kanit.className}`}
-                    style={{
-                        textUnderlinePosition: "from-font",
-                        textDecorationSkipInk: "none",
-                        color: "#606E56",
-                    }}
-                >
-                    2.โรงงานของเธออยากช่วยลด
-                    <br />ก๊าซเรือนกระจก (GHG)
-                    <br />เธอจะทำยังไงให้ช่วยโลก?
-                </h1>
+                <img
+                    src="/image/q2.png" // 🔹 เปลี่ยนเป็น Path ของ PNG
+                    alt="คำถามที่ 1"
+                    className="mx-auto h-auto"
+                />
             </div>
 
 
 
             {/* Question Section */}
-            <div className="space-y-4 sm:space-y-6 px-4 sm:px-6 md:px-8 lg:px-10"
-                 style={{
-                     transform: "translateY(-50%)", // ขยับให้สมดุล
-                 }}
+            <div
+                className="space-y-4 sm:space-y-6 px-4 sm:px-6 md:px-8 lg:px-10"
+                style={{
+                    transform: "translateY(-30%)", // ขยับให้สมดุล
+                }}
             >
-                {[{
-                    text: "ใช้พลังงานทดแทนอย่างพลังงานแสงอาทิตย์",
-                    bgColor: "#B5D08B",
-                    answer: "A",
-                }, {
-                    text: "ปลูกป่าเพิ่ม ช่วยดูดซับก๊าซเรือนกระจก",
-                    bgColor: "#B5D08B",
-                    answer: "B",
-                }, {
-                    text: "คิดหาวิธีที่ลดเศษของเสียจากโรงงานเลย",
-                    bgColor: "#B5D08B",
-                    answer: "C",
-                }].map((button, index) => (
-                    <button
+                {[
+                    { img: "/image/2optionA.png", imgSelected: "/image/2optionA_selected.png", answer: "A" },
+                    { img: "/image/2optionB.png", imgSelected: "/image/2optionB_selected.png", answer: "B" },
+                    { img: "/image/2optionC.png", imgSelected: "/image/2optionC_selected.png", answer: "C" }
+                ].map((button, index) => (
+                    <motion.img
                         key={index}
+                        src={selectedButton === index ? button.imgSelected : button.img} // ✅ เปลี่ยนรูปเมื่อเลือก
+                        alt={`Option ${button.answer}`}
                         onClick={() => handleButtonClick(index, button.answer)}
-                        className="w-full h-[40px] px-4 py-2 font-medium"
-                        style={{
-                            width: "359px",
-                            height: "55px",
-                            borderRadius: "90px",
-                            border: "4px solid #FFF7F0",
-                            boxShadow: "0px 4px 0px 0px #0000001A",
-                            backgroundColor: selectedButton === index ? "#606E56" : button.bgColor,
-                            color:selectedButton === index ? "#FFFFFF" : "#606E56",
-                            fontSize: "13px",
-                        }}
-                    >
-                        {button.text}
-                    </button>
+                        className="cursor-pointer w-[359px] h-[55px] transition-opacity duration-300"
+                        whileTap={{ scale: 0.9 }} // ✅ ทำให้เด้งลงเล็กน้อยเมื่อคลิก
+                    />
                 ))}
             </div>
+
 
             {/* หยดน้ำที่ค่อยๆ หยดลงมา */}
             <div className="absolute bottom-[280px] left-[50%] animate-drop" style={{ animationDelay: "0.1s" }}>
