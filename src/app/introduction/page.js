@@ -315,7 +315,7 @@ export default function Introduction() {
       </div>
 
       {/* Next Button */}
-      <div className="absolute bottom-8 sm:bottom-10 md:bottom-12 lg:bottom-16 left-1/2 transform -translate-x-1/2 z-30">
+      <div className="absolute bottom-10 sm:bottom-10 md:bottom-12 lg:bottom-16 left-1/2 transform -translate-x-1/2 z-30">
         <div onClick={handleNextClick}>
           <img
             src={

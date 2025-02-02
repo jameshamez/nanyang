@@ -133,7 +133,7 @@ export default function Introduction() {
             placeholder={
               isEnglish
                 ? "Enter your work description"
-                : "Entrez votre description de travail"
+                : "Enter your work description"
             }
             value={workDesc}
             onChange={(e) => setWorkDesc(e.target.value)}
