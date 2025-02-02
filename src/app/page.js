@@ -53,7 +53,7 @@ export default function Home() {
       {/* Language Button (Top Right) */}
       <div className="absolute top-8 right-8 z-20 md:top-6 md:right-6">
         <img
-          src="/index/EnButton.png"
+          src={isEnglish ? "/index/ThButton.png" : "/index/EnButton.png"}
           alt="Change Language"
           className="w-10 md:w-12 cursor-pointer hover:opacity-80 transition-opacity"
           onClick={handleLanguageChange}

@@ -104,16 +104,24 @@ export default function Introduction() {
         />
 
         {/* Name Label */}
-        <div className="absolute top-5 sm:top-5 md:top-8 left-1/2 transform -translate-x-1/2">
-          <img
-            src={
-              isEnglish
-                ? "/introduction/nameLabel.png"
-                : "/introduction/nameLabel.png"
-            }
-            alt="Name Label"
-            className="w-[100px] sm:w-[100px] md:w-[120px] lg:w-[180px] max-w-none"
-          />
+        <div
+            className={`absolute ${
+                isEnglish ? "top-8 sm:top-8" : "top-5 sm:top-5"
+            } md:top-8 left-1/2 transform -translate-x-1/2`}
+        >
+          {isEnglish ? (
+              <img
+                  src="/introduction/nameLabelEN.png"
+                  alt="Name Label"
+                  className="w-[200px] sm:w-[140px] md:w-[160px] lg:w-[200px] h-auto max-w-none"
+              />
+          ) : (
+              <img
+                  src="/introduction/nameLabel.png"
+                  alt="Name Label"
+                  className="w-[120px] sm:w-[140px] md:w-[160px] lg:w-[200px] h-auto max-w-none"
+              />
+          )}
         </div>
 
         {/* Name Box */}
@@ -196,13 +204,20 @@ export default function Introduction() {
         </div>
 
         {/* Age Label */}
-        <div className="absolute top-40 sm:top-40 md:top-48 lg:top-56 left-1/2 transform -translate-x-1/2">
+        <div
+            className="absolute left-1/2 transform -translate-x-1/2"
+            style={{
+              top: isEnglish ? "9rem" : "10rem", // ✅ ปรับตำแหน่ง `top`
+              paddingTop: isEnglish ? "1.5rem" : "0rem" // ✅ เพิ่ม Padding-Top
+            }}
+        >
           <img
-            src={isEnglish ? "/introduction/age.png" : "/introduction/age.png"}
-            alt="Age"
-            className="w-[36px] sm:w-[40px] md:w-[48px] lg:w-[56px] max-w-none"
+              src={isEnglish ? "/introduction/ageEN.png" : "/introduction/age.png"}
+              alt="Age"
+              className="w-[36px] sm:w-[40px] md:w-[48px] lg:w-[56px] max-w-none"
           />
         </div>
+
 
         {/* Age Range Icons */}
         <div className="absolute top-48 sm:top-52 md:top-60 lg:top-[280px] left-1/2 transform -translate-x-1/2 w-[240px] sm:w-[280px] md:w-[300px]">
@@ -254,7 +269,7 @@ export default function Introduction() {
           <img
             src={
               isEnglish
-                ? "/introduction/occupation.png"
+                ? "/introduction/occupationEN.png"
                 : "/introduction/occupation.png"
             }
             alt="Occupation"

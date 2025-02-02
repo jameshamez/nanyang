@@ -101,7 +101,11 @@ export default function Introduction() {
       {/* Introduction Panel */}
       <div className="absolute top-[51%] md:top-[52%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
         <img
-          src="/introductionCon/Panel.png"
+            src={
+              isEnglish
+                  ? "/introductionCon/PanelEN.png"
+                  : "/introductionCon/Panel.png"
+            }
           alt="Introduction Panel"
           className="w-[320px] sm:w-[360px] md:w-[400px] lg:w-[480px] max-w-none"
         />
@@ -119,8 +123,12 @@ export default function Introduction() {
         </div>
 
         {/* Work Description Input Overlay */}
-        <div className="absolute top-[204px] sm:top-[234px] md:top-[260px] lg:top-[320px] left-1/2 transform -translate-x-1/2 w-[280px] sm:w-[280px] md:w-[300px] lg:w-[360px] h-[60px]">
-          <input
+        <div
+            className={`absolute ${
+                isEnglish ? "top-[190px]" : "top-[204px] sm:top-[234px] md:top-[260px] lg:top-[320px]"
+            } left-1/2 transform -translate-x-1/2 w-[280px] sm:w-[280px] md:w-[300px] lg:w-[360px] h-[60px]`}
+        >
+        <input
             type="text"
             placeholder={
               isEnglish
