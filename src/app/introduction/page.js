@@ -1,41 +1,48 @@
-"use client"; // Mark this as a Client Component (required for useState and interactivity)
+"use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation"; // For `app` directory
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 export default function Introduction() {
-  const [name, setName] = useState(""); // Track user's name
-  const [selectedGender, setSelectedGender] = useState(null); // Track selected gender
-  const [selectedAge, setSelectedAge] = useState(null); // Track selected age
-  const [selectedOccupation, setSelectedOccupation] = useState(null); // Track selected occupation
-  const [isNextClicked, setIsNextClicked] = useState(false); // Track if the Next button is clicked
+  const [name, setName] = useState("");
+  const [selectedGender, setSelectedGender] = useState(null);
+  const [selectedAge, setSelectedAge] = useState(null);
+  const [selectedOccupation, setSelectedOccupation] = useState(null);
+  const [isNextClicked, setIsNextClicked] = useState(false);
+  const [isEnglish, setIsEnglish] = useState(false);
 
-  const router = useRouter(); // Initialize useRouter
+  const router = useRouter();
 
-  // Function to handle the "Next" button click
+  useEffect(() => {
+    const language = Cookies.get("language");
+    setIsEnglish(language === "en");
+  }, []);
+
   const handleNextClick = async () => {
-    setIsNextClicked(true); // Set the button to active state
+    setIsNextClicked(true);
     setTimeout(() => setIsNextClicked(false), 200); // Reset after 200ms
 
-    // Validate required fields
     if (!name || !selectedGender || !selectedAge || !selectedOccupation) {
-      alert("Please fill out all fields");
+      alert(
+        isEnglish
+          ? "Please fill out all fields"
+          : "Please fill out all fields"
+      );
       return;
     }
 
-    // Prepare data to send to the API
     const userData = {
       name,
       gender: selectedGender,
       age: selectedAge,
       occupation: selectedOccupation,
-      jobDesc: selectedOccupation === "student" ? null : null, // Leave as null for non-students
-      companySector: selectedOccupation === "student" ? null : null, // Leave as null for non-students
+      jobDesc: selectedOccupation === "student" ? null : null,
+      companySector: selectedOccupation === "student" ? null : null,
     };
 
     if (selectedOccupation === "student") {
       try {
-        // Send data to the API route
         const response = await fetch("/api/saveUser", {
           method: "POST",
           headers: {
@@ -44,10 +51,9 @@ export default function Introduction() {
           body: JSON.stringify(userData),
         });
 
-        const data = await response.json(); // Parse the response body
+        const data = await response.json();
         if (response.ok) {
           console.log("User data saved successfully:", data);
-          // Redirect to the quiz section
           router.push("/startquiz");
         } else {
           console.error("Failed to save user data:", data.message);
@@ -57,14 +63,16 @@ export default function Introduction() {
       }
     } else {
       try {
-        // Store data temporarily in localStorage
         localStorage.setItem("userData", JSON.stringify(userData));
         console.log("User data saved to localStorage:", userData);
-        // Redirect to the introductionCon page
         router.push("/introductionCon");
       } catch (error) {
         console.error("Error saving to localStorage:", error);
-        alert("Failed to save data. Please try again.");
+        alert(
+          isEnglish
+            ? "Failed to save data. Please try again."
+            : "Failed to save data. Please try again."
+        );
       }
     }
   };
@@ -77,7 +85,11 @@ export default function Introduction() {
       {/* Logo */}
       <div className="absolute top-8 sm:top-8 md:top-12 lg:top-16 left-1/2 transform -translate-x-1/2 z-20">
         <img
-          src="/introduction/logo2PNG.png"
+          src={
+            isEnglish
+              ? "/introduction/1-LogoEng.png"
+              : "/introduction/logo2PNG.png"
+          }
           alt="Logo"
           className="w-20 sm:24 md:w-36 lg:w-48"
         />
@@ -88,15 +100,19 @@ export default function Introduction() {
         <img
           src="/introduction/introductionPanel.svg"
           alt="Introduction Panel"
-          className="w-[320px] sm:w-[360px] md:w-[400px] lg:w-[480px] max-w-none" // Responsive width
+          className="w-[320px] sm:w-[360px] md:w-[400px] lg:w-[480px] max-w-none"
         />
 
         {/* Name Label */}
         <div className="absolute top-5 sm:top-5 md:top-8 left-1/2 transform -translate-x-1/2">
           <img
-            src="/introduction/nameLabel.png"
+            src={
+              isEnglish
+                ? "/introduction/nameLabel.png"
+                : "/introduction/nameLabel.png"
+            }
             alt="Name Label"
-            className="w-[100px] sm:w-[100px] md:w-[120px] lg:w-[180px] max-w-none" // Responsive width
+            className="w-[100px] sm:w-[100px] md:w-[120px] lg:w-[180px] max-w-none"
           />
         </div>
 
@@ -106,13 +122,13 @@ export default function Introduction() {
           <img
             src="/introduction/nameBox.png"
             alt="Name Box"
-            className="w-[260px] sm:w-[280px] md:w-[300px] lg:w-[360px] max-w-none" // Responsive width
+            className="w-[260px] sm:w-[280px] md:w-[300px] lg:w-[360px] max-w-none"
           />
 
           {/* Input Element Overlay */}
           <input
             type="text"
-            placeholder="Enter your name"
+            placeholder={isEnglish ? "Enter your name" : "Enter your name"}
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80%] h-[60%] bg-transparent border-none focus:outline-none text-[#4D7DBF] text-center placeholder-[#4D7DBF]"
@@ -130,11 +146,15 @@ export default function Introduction() {
             <img
               src={
                 selectedGender === "male"
-                  ? "/introduction/maleActive.png"
+                  ? isEnglish
+                    ? "/introduction/maleActiveEng.png"
+                    : "/introduction/maleActive.png"
+                  : isEnglish
+                  ? "/introduction/maleEng.png"
                   : "/introduction/male.png"
               }
               alt="Male"
-              className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none" // Responsive width
+              className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none"
             />
           </div>
 
@@ -146,11 +166,15 @@ export default function Introduction() {
             <img
               src={
                 selectedGender === "female"
-                  ? "/introduction/femaleActive.png"
+                  ? isEnglish
+                    ? "/introduction/femaleActiveEng.png"
+                    : "/introduction/femaleActive.png"
+                  : isEnglish
+                  ? "/introduction/femaleEng.png"
                   : "/introduction/female.png"
               }
               alt="Female"
-              className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none" // Responsive width
+              className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none"
             />
           </div>
 
@@ -166,7 +190,7 @@ export default function Introduction() {
                   : "/introduction/LGBTQ.png"
               }
               alt="LGBTQ"
-              className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none" // Responsive width
+              className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none"
             />
           </div>
         </div>
@@ -174,9 +198,9 @@ export default function Introduction() {
         {/* Age Label */}
         <div className="absolute top-40 sm:top-40 md:top-48 lg:top-56 left-1/2 transform -translate-x-1/2">
           <img
-            src="/introduction/age.png"
+            src={isEnglish ? "/introduction/age.png" : "/introduction/age.png"}
             alt="Age"
-            className="w-[36px] sm:w-[40px] md:w-[48px] lg:w-[56px] max-w-none" // Responsive width
+            className="w-[36px] sm:w-[40px] md:w-[48px] lg:w-[56px] max-w-none"
           />
         </div>
 
@@ -197,7 +221,7 @@ export default function Introduction() {
                       : `${age}PNG.png`
                   }`}
                   alt={age}
-                  className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none" // Responsive width
+                  className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none"
                 />
               </div>
             ))}
@@ -218,7 +242,7 @@ export default function Introduction() {
                       : `${age}PNG.png`
                   }`}
                   alt={age}
-                  className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none" // Responsive width
+                  className="w-20 sm:w-20 md:w-24 lg:w-28 max-w-none"
                 />
               </div>
             ))}
@@ -228,9 +252,13 @@ export default function Introduction() {
         {/* Occupation Label */}
         <div className="absolute top-[310px] sm:top-[320px] md:top-[360px] lg:top-[420px] left-1/2 transform -translate-x-1/2">
           <img
-            src="/introduction/occupation.png"
+            src={
+              isEnglish
+                ? "/introduction/occupation.png"
+                : "/introduction/occupation.png"
+            }
             alt="Occupation"
-            className="w-[120px] sm:w-[100px] md:w-[140px] lg:w-[160px] max-w-none" // Responsive width
+            className="w-[120px] sm:w-[100px] md:w-[140px] lg:w-[160px] max-w-none"
           />
         </div>
 
@@ -242,7 +270,7 @@ export default function Introduction() {
               "officeWorker",
               "freelance",
               "foreigner",
-              "bussinessOwner",
+              "businessOwner",
               "etc",
             ].map((occupation) => (
               <div
@@ -252,12 +280,18 @@ export default function Introduction() {
               >
                 <img
                   src={
-                    selectedOccupation === occupation
-                      ? `/introduction/${occupation}Active.png`
-                      : `/introduction/${occupation}.png`
+                    isEnglish
+                      ? `/introduction/${occupation}${
+                          selectedOccupation === occupation
+                            ? "ActiveEng"
+                            : "Eng"
+                        }.png`
+                      : `/introduction/${occupation}${
+                          selectedOccupation === occupation ? "Active" : ""
+                        }.png`
                   }
                   alt={occupation}
-                  className="w-28 sm:w-28 md:w-40 lg:w-52 max-w-none" // Responsive width
+                  className="w-28 sm:w-28 md:w-40 lg:w-52 max-w-none"
                 />
               </div>
             ))}
@@ -275,18 +309,14 @@ export default function Introduction() {
                 : "/introduction/Next2.svg"
             }
             alt="Next Button"
-            className="w-16 sm:w-20 md:w-28 lg:w-36 cursor-pointer" // Responsive width
+            className="w-16 sm:w-20 md:w-28 lg:w-36 cursor-pointer"
           />
         </div>
       </div>
 
       {/* Footer */}
       <div className="absolute -bottom-8 md:-bottom-24 lg:-bottom-32 left-0 w-full z-20">
-        <img
-          src="/introduction/footer2.svg"
-          alt="Footer"
-          className="w-full" // Footer fills the entire screen width
-        />
+        <img src="/introduction/footer2.svg" alt="Footer" className="w-full" />
       </div>
     </div>
   );

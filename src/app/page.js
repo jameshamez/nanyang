@@ -1,16 +1,22 @@
 "use client";
 
 import { useState } from 'react';
-
+import Cookies from 'js-cookie';
 export default function Home() {
   const [isClicked, setIsClicked] = useState(false);
+  const [isEnglish, setIsEnglish] = useState(false);
 
   const handleClick = () => {
     setIsClicked(true);
-    // You can add a timeout to reset the state after a short delay to simulate the press effect
     setTimeout(() => {
       setIsClicked(false);
-    }, 200); // Adjust the delay as needed
+    }, 200);
+  };
+
+  const handleLanguageChange = () => {
+    const newLanguage = !isEnglish;
+    setIsEnglish(newLanguage);
+    Cookies.set('language', newLanguage ? 'en' : 'fr', { expires: 7 }); // Set cookie for 7 days
   };
 
   return (
@@ -50,6 +56,7 @@ export default function Home() {
           src="/index/EnButton.png"
           alt="Change Language"
           className="w-10 md:w-12 cursor-pointer hover:opacity-80 transition-opacity"
+          onClick={handleLanguageChange}
         />
       </div>
 
@@ -59,7 +66,7 @@ export default function Home() {
         <div className="relative">
           {/* Logo */}
           <img
-            src="/index/1-Logo.png"
+            src={isEnglish ? "/index/1-LogoEng.png" : "/index/1-Logo.png"}
             alt="Eco Quiz Logo"
             className="mx-auto mb-8 md:mb-16 w-[80%] max-w-[600px] animate-logo-bounce"
           />
