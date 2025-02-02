@@ -10,10 +10,14 @@ export default function GroupsPage() {
         GreenTech: []
     });
     const [groupPercentages, setGroupPercentages] = useState({
-        RecycledCotton: "0.00",
-        RecycledPolyester: "0.00",
-        EcoProduced: "0.00",
-        GreenTech: "0.00"
+        RecycledCotton: "0",
+        RecycledPolyester: "0",
+        EcoProduced: "0",
+        GreenTech: "0"
+    });
+    const getRandomPosition = () => ({
+        left: `${Math.random() * 100}%`,
+        top: `-${Math.random() * 20}%` // เริ่มเหนือจอเล็กน้อย
     });
 
     useEffect(() => {
@@ -28,48 +32,223 @@ export default function GroupsPage() {
         fetchGroups();
     }, []);
 
-    // ✅ กำหนดสีของแต่ละกลุ่ม
-    const colors = {
-        RecycledCotton: "#FFB74D", // ส้ม
-        RecycledPolyester: "#4DB6AC", // ฟ้าอมเขียว
-        EcoProduced: "#AED581", // เขียว
-        GreenTech: "#64B5F6" // น้ำเงิน
+    // ✅ กำหนดภาพของแต่ละกลุ่มแยกกันไปเลย
+    const groupImages = {
+        RecycledCotton: "/images/recycledcotton.png",
+        RecycledPolyester: "/images/recycledpolyester.png",
+        EcoProduced: "/images/ecoproduced.png",
+        GreenTech: "/images/greentech.png"
+    };
+
+    // ✅ กำหนดขนาดของแต่ละกลุ่ม
+    const groupSizes = {
+        RecycledCotton: "w-12 h-12",   // ขนาดใหญ่สุด
+        RecycledPolyester: "w-10 h-10",
+        EcoProduced: "w-8 h-8",
+        GreenTech: "w-6 h-6"          // ขนาดเล็กสุด
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-10">
-            <h1 className="text-3xl font-bold mb-8">🌍 ECO SCORE GROUPS</h1>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {Object.keys(groups).map((group, index) => (
-                    <div key={index} className="flex flex-col items-center">
-                        <h2 className="text-lg font-semibold mb-2">{group}</h2>
-                        <p className="text-gray-600">{groupPercentages[group]}%</p>
-                        <div className="relative w-32 h-32 mt-4">
-                            {groups[group].map((user, i) => (
-                                <motion.div
-                                    key={i}
-                                    className="absolute rounded-full w-8 h-8"
-                                    style={{
-                                        backgroundColor: colors[group],
-                                        top: `${Math.random() * 50}%`,
-                                        left: `${Math.random() * 50}%`
-                                    }}
-                                    animate={{
-                                        y: [0, -10, 10, -5, 5, 0],
-                                        x: [0, 5, -5, 0]
-                                    }}
-                                    transition={{
-                                        duration: 2,
-                                        repeat: Infinity,
-                                        repeatType: "mirror"
-                                    }}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                ))}
+        <div
+            className="min-h-screen flex flex-col items-center justify-center p-10 relative"
+            style={{
+                backgroundImage: "url(/image/bginsight.png)",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundAttachment: "fixed",
+            }}
+        >
+            {[...Array(10)].map((_, i) => (
+                <motion.img
+                    key={i}
+                    src="/image/leafinsight.png"
+                    alt="Falling Leaf"
+                    className="absolute w-10 h-auto opacity-80 z-[0]" // ✅ ลด z-index ให้ไปข้างหลัง
+                    style={getRandomPosition()}
+                    animate={{
+                        y: [0, 800], // เคลื่อนที่ลง
+                        rotate: [0, 10, -10, 5, -5, 0], // หมุนเล็กน้อย
+                        opacity: [1, 1, 0] // ค่อยๆ หายไป
+                    }}
+                    transition={{
+                        duration: 6 + Math.random() * 4, // กำหนดเวลาตกแบบสุ่ม
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: Math.random() * 3 // เริ่มตกในเวลาที่ต่างกัน
+                    }}
+                />
+            ))}
+            <div className="text-center mb-10 z-10 relative"> {/* ✅ เพิ่ม z-10 ให้มากกว่าใบไม้ */}
+                <img
+                    src="/image/Insightname.png"
+                    alt="ECO SCORE GROUPS"
+                    className="w-64 h-auto mx-auto mb-4 z-10 relative"
+                />
             </div>
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-10 items-center">
+                {/* ✅ Recycled Cotton - ซ้าย */}
+                <div className="flex items-center justify-start relative">
+                    <motion.div
+                        className="relative flex items-center justify-center rounded-full shadow-md"
+                        animate={{ y: [0, -10, 10, -5, 5, 0], x: [0, 5, -5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, repeatType: "mirror" }}
+                        style={{
+                            width: `${100 + groupPercentages.RecycledCotton}px`,
+                            height: `${100 + groupPercentages.RecycledCotton}px`
+                        }}
+                    >
+                        <img
+                            src="/image/cotton.png"
+                            alt="Recycled Cotton"
+                            className="object-cover rounded-full w-full h-full"
+                        />
+                        <div className="absolute flex items-center justify-center w-full h-full">
+                <span
+                    className="text-black font-bold"
+                    style={{
+                        fontSize: `${12 + groupPercentages.RecycledCotton / 3}px`,
+                        position: "absolute",
+                        transform: `translateY(${-140 + groupPercentages.RecycledCotton / 2}%)`
+                    }}
+                >
+                    {groupPercentages.RecycledCotton}%
+                </span>
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* ✅ Recycled Polyester - ขวา */}
+                <div className="flex items-center justify-end relative">
+                    <motion.div
+                        className="relative flex items-center justify-center rounded-full shadow-md"
+                        animate={{ y: [0, -10, 10, -5, 5, 0], x: [0, 5, -5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, repeatType: "mirror" }}
+                        style={{
+                            width: `${100 + groupPercentages.RecycledPolyester}px`,
+                            height: `${100 + groupPercentages.RecycledPolyester}px`
+                        }}
+                    >
+                        <img
+                            src="/image/recycledpolyester.png"
+                            alt="Recycled Polyester"
+                            className="object-cover rounded-full w-full h-full"
+                        />
+                        <div className="absolute flex items-center justify-center w-full h-full">
+                <span
+                    className="text-black font-bold"
+                    style={{
+                        fontSize: `${12 + groupPercentages.RecycledPolyester / 3}px`,
+                        position: "absolute",
+                        transform: `translateY(${-160 + groupPercentages.RecycledPolyester / 2}%)`
+                    }}
+                >
+                    {groupPercentages.RecycledPolyester}%
+                </span>
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* ✅ Eco Produced - ซ้าย */}
+                <div className="flex items-center justify-start relative">
+                    <motion.div
+                        className="relative flex items-center justify-center rounded-full shadow-md"
+                        animate={{ y: [0, -10, 10, -5, 5, 0], x: [0, 5, -5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, repeatType: "mirror" }}
+                        style={{
+                            width: `${100 + groupPercentages.EcoProduced}px`,
+                            height: `${100 + groupPercentages.EcoProduced}px`
+                        }}
+                    >
+                        <img
+                            src="/image/ecoproduce.png"
+                            alt="Eco Produced"
+                            className="object-cover rounded-full w-full h-full"
+                        />
+                        <div className="absolute flex items-center justify-center w-full h-full">
+                <span
+                    className="text-black font-bold"
+                    style={{
+                        fontSize: `${12 + groupPercentages.EcoProduced / 3}px`,
+                        position: "absolute",
+                        transform: `translateY(${-140 + groupPercentages.EcoProduced / 2}%)`
+                    }}
+                >
+                    {groupPercentages.EcoProduced}%
+                </span>
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* ✅ Green Tech - ขวา */}
+                <div className="flex items-center justify-end relative">
+                    <motion.div
+                        className="relative flex items-center justify-center rounded-full shadow-md"
+                        animate={{ y: [0, -10, 10, -5, 5, 0], x: [0, 5, -5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, repeatType: "mirror" }}
+                        style={{
+                            width: `${100 + groupPercentages.GreenTech}px`,
+                            height: `${100 + groupPercentages.GreenTech}px`
+                        }}
+                    >
+                        <img
+                            src="/image/greentech.png"
+                            alt="Green Tech"
+                            className="object-cover rounded-full w-full h-full"
+                        />
+                        <div className="absolute flex items-center justify-center w-full h-full">
+                <span
+                    className="text-black font-bold"
+                    style={{
+                        fontSize: `${12 + groupPercentages.GreenTech / 3}px`,
+                        position: "absolute",
+                        transform: `translateY(${-140 + groupPercentages.GreenTech / 2}%)`
+                    }}
+                >
+                    {groupPercentages.GreenTech}%
+                </span>
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+
+
+
+
+            {/* ✅ ใบไม้พริ้วไหวที่ Footer (ซ้ายและขวา) */}
+            <footer className="absolute bottom-0 w-full h-45 flex justify-between items-end px-10">
+                {/* 🍃 ใบไม้ด้านซ้าย */}
+                <motion.img
+                    src="/image/leftinsight.png"
+                    alt="Swinging Left Leaf"
+                    className="absolute left-0 bottom-[-60px] w-36 h-auto object-cover" // ✅ ปรับตำแหน่งลง
+                    animate={{
+                        rotate: [-10, -20, -10],  // ขยับไปมา
+                    }}
+                    transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatType: "mirror",
+                        ease: "easeInOut",
+                    }}
+                />
+
+                {/* 🍃 ใบไม้ด้านขวา */}
+                <motion.img
+                    src="/image/rightinsight.png"
+                    alt="Swinging Right Leaf"
+                    className="absolute right-[50px] bottom-[-60px] w-36 h-auto object-cover" // ✅ ขยับเข้ามาตรงกลาง
+                    animate={{
+                        rotate: [1, -5, 1],  // ขยับไปมา
+                        x: [0, 5, -5, 0],  // ✅ ให้ใบไม้ขยับไปทางขวาเล็กน้อย
+                    }}
+                    transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatType: "mirror",
+                        ease: "easeInOut",
+                    }}
+                />
+            </footer>
         </div>
     );
 }

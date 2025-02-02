@@ -5,30 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="574966ff-fbd3-49af-85bc-af254879a8bb" name="Changes" comment="Fix goto quiz for student">
-      <change afterPath="$PROJECT_DIR$/src/pages/api/calculate-group.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/api/getGroups.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/api/getUser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/api/save-answer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_1_2568_19_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_1_2568_19_55__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mongodb.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mongodb.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Ecoinsight/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Ecoinsight/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Ecoscore1/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Ecoscore1/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Ecoscore2/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Ecoscore2/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Ecoscore3/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Ecoscore3/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Ecoscore4/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Ecoscore4/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/introduction/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/introduction/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/introductionCon/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/introductionCon/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/quiz1/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quiz1/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/quiz2/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quiz2/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/quiz3/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quiz3/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/quiz4/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quiz4/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/quiz5/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quiz5/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/saveUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/saveUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/testConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/testConnection.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,8 +43,8 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "nanyangk",
-    "last_opened_file_path": "C:/Users/natthapongpho/my-app",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/cmp-api",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
