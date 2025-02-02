@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 const kanit = Kanit({ subsets: ["thai"], weight: "700" });
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Cookies from "js-cookie";
 
 export default function QuizPage() {
   const router = useRouter();
@@ -12,6 +13,7 @@ export default function QuizPage() {
   const [userId, setUserId] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true); // ✅ สร้าง state เพื่อเช็คว่าโหลด `userId` เสร็จหรือยัง
   const [isNextButtonActive, setIsNextButtonActive] = useState(false); // State for button press effect
+  const [isEnglish, setIsEnglish] = useState(false);
 
   // ✅ ดึง `_id` จาก Cookie และป้องกันการเรียก API ซ้ำ
   useEffect(() => {
@@ -69,6 +71,11 @@ export default function QuizPage() {
     }
   };
 
+  useEffect(() => {
+    const language = Cookies.get("language");
+    setIsEnglish(language === "en");
+  }, []);
+
   return (
     <div
       className={`flex flex-col items-center justify-center min-h-screen bg-blue-50 px-4 relative ${kanit.className}`} // ใช้ฟอนต์ Kanit
@@ -89,28 +96,34 @@ export default function QuizPage() {
         }}
       >
         <img
-          src="/image/q4.png" // 🔹 เปลี่ยนเป็น Path ของ PNG
+          src={isEnglish ? "/image/q4EN.png" : "/image/q4.png"} // ✅ เปลี่ยนรูปตาม isEnglish
           alt="คำถามที่ 1"
           className="w-[250px] sm:w-[300px] md:w-[400px] lg:w-[500px] mx-auto"
         />
       </div>
 
       {/* Question Section */}
-      <div className="space-y-4 sm:space-y-6 px-4 sm:px-6 md:px-8 lg:px-10 absolute transform -translate-y-[40%] sm:-translate-y-[40%] md:-translate-y-[35%] w-full">
+      <div className={isEnglish ? "space-y-4 sm:space-y-6 px-4 sm:px-6 md:px-8 lg:px-10 absolute transform -translate-y-[40%] sm:-translate-y-[40%] md:-translate-y-[30%] lg:-translate-y-[30%] w-full" : "space-y-4 sm:space-y-6 px-4 sm:px-6 md:px-8 lg:px-10 absolute transform -translate-y-[40%] sm:-translate-y-[40%] md:-translate-y-[30%] lg:-translate-y-[30%] w-full"}>
         {[
           {
-            img: "/image/4optionA.png",
-            imgSelected: "/image/4optionA_selected.png",
+            img: isEnglish ? "/image/4optionA_en.png" : "/image/4optionA.png",
+            imgSelected: isEnglish
+              ? "/image/4optionA_selected_en.png"
+              : "/image/4optionA_selected.png",
             answer: "A",
           },
           {
-            img: "/image/4optionB.png",
-            imgSelected: "/image/4optionB_selected.png",
+            img: isEnglish ? "/image/4optionB_en.png" : "/image/4optionB.png",
+            imgSelected: isEnglish
+              ? "/image/4optionB_selected_en.png"
+              : "/image/4optionB_selected.png",
             answer: "B",
           },
           {
-            img: "/image/4optionC.png",
-            imgSelected: "/image/4optionC_selected.png",
+            img: isEnglish ? "/image/4optionC_en.png" : "/image/4optionC.png",
+            imgSelected: isEnglish
+              ? "/image/4optionC_selected_en.png"
+              : "/image/4optionC_selected.png",
             answer: "C",
           },
         ].map((button, index) => (

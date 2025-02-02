@@ -49,13 +49,13 @@ export default function QuizPage() {
                 {/* Share Button */}
                 <button
                     className="w-[60px] h-[60px] flex justify-center items-center"
-                    onClick={() => console.log('Navigate to share')}
+                    onClick={() => {
+                        const shareUrl = encodeURIComponent("https://nanyang-ss9w.vercel.app");
+                        const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+                        window.open(facebookShareUrl, "_blank", "width=600,height=400");
+                    }}
                 >
-                    <img
-                        src="/image/share.png"
-                        alt="Share"
-                        className="w-full h-full object-contain"
-                    />
+                    <img src="/image/share.png" alt="Share" className="w-full h-full object-contain" />
                 </button>
             </div>
         </div>

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 const kanit = Kanit({ subsets: ["thai"], weight: "700" });
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Cookies from "js-cookie";
 
 export default function QuizPage() {
   const router = useRouter();
@@ -12,6 +13,7 @@ export default function QuizPage() {
   const [userId, setUserId] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true); // ✅ สร้าง state เพื่อเช็คว่าโหลด `userId` เสร็จหรือยัง
   const [isNextButtonActive, setIsNextButtonActive] = useState(false); // State for button press effect
+  const [isEnglish, setIsEnglish] = useState(false);
 
   // ✅ ดึง `_id` จาก Cookie และป้องกันการเรียก API ซ้ำ
   useEffect(() => {
@@ -63,12 +65,16 @@ export default function QuizPage() {
   const handleNextClick = (selectedButton) => {
     if (selectedButton !== null) {
       setIsNextButtonActive(true); // Set button to active state
-        router.push("/quiz3"); // Navigate after a short delay
+      router.push("/quiz3"); // Navigate after a short delay
     } else {
       alert("กรุณาเลือกคำตอบก่อน");
     }
   };
 
+  useEffect(() => {
+    const language = Cookies.get("language");
+    setIsEnglish(language === "en");
+  }, []);
   return (
     <div
       className={`flex flex-col items-center justify-center min-h-screen bg-blue-50 px-4 relative ${kanit.className}`} // ใช้ฟอนต์ Kanit
@@ -89,28 +95,34 @@ export default function QuizPage() {
         }}
       >
         <img
-          src="/image/q2.png" // 🔹 เปลี่ยนเป็น Path ของ PNG
+          src={isEnglish ? "/image/q2EN.png" : "/image/q2.png"} // ✅ เปลี่ยนรูปตาม isEnglish
           alt="คำถามที่ 1"
           className="w-[250px] sm:w-[300px] md:w-[400px] lg:w-[500px] mx-auto"
         />
       </div>
 
       {/* Question Section */}
-      <div className="space-y-4 sm:space-y-6 px-4 sm:px-6 md:px-8 lg:px-10 absolute transform -translate-y-[40%] sm:-translate-y-[40%] md:-translate-y-[35%] w-full">
+      <div className={isEnglish ? "space-y-4 sm:space-y-6 px-4 sm:px-6 md:px-8 lg:px-10 absolute transform -translate-y-[40%] sm:-translate-y-[40%] md:-translate-y-[25%] lg:-translate-y-[25%] w-full" : "space-y-4 sm:space-y-6 px-4 sm:px-6 md:px-8 lg:px-10 absolute transform -translate-y-[40%] sm:-translate-y-[40%] md:-translate-y-[30%] lg:-translate-y-[30%] w-full"}>
         {[
           {
-            img: "/image/2optionA.png",
-            imgSelected: "/image/2optionA_selected.png",
+            img: isEnglish ? "/image/2optionA_en.png" : "/image/2optionA.png",
+            imgSelected: isEnglish
+              ? "/image/2optionA_selected_en.png"
+              : "/image/2optionA_selected.png",
             answer: "A",
           },
           {
-            img: "/image/2optionB.png",
-            imgSelected: "/image/2optionB_selected.png",
+            img: isEnglish ? "/image/2optionB_en.png" : "/image/2optionB.png",
+            imgSelected: isEnglish
+              ? "/image/2optionB_selected_en.png"
+              : "/image/2optionB_selected.png",
             answer: "B",
           },
           {
-            img: "/image/2optionC.png",
-            imgSelected: "/image/2optionC_selected.png",
+            img: isEnglish ? "/image/2optionC_en.png" : "/image/2optionC.png",
+            imgSelected: isEnglish
+              ? "/image/2optionC_selected_en.png"
+              : "/image/2optionC_selected.png",
             answer: "C",
           },
         ].map((button, index) => (
@@ -191,7 +203,6 @@ export default function QuizPage() {
           className="w-full h-auto object-cover"
         />
       </div>
-      {/* CSS Animations */}
       <style jsx>{`
         @keyframes drop {
           0% {

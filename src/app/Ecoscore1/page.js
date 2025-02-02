@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 const kanit = Kanit({ subsets: ['thai'], weight: '700' });
 import { useState } from 'react';
-
+import Head from 'next/head';
 
 
 
@@ -24,7 +24,7 @@ export default function QuizPage() {
         setSelectedButton(index);
     };
     return (
-        <div
+            <div
             className="flex flex-col items-center justify-center min-h-screen bg-blue-50 px-4 relative"
             style={{
                 backgroundImage: "url(/image/score1.png)",
@@ -49,14 +49,16 @@ export default function QuizPage() {
                 {/* Share Button */}
                 <button
                     className="w-[60px] h-[60px] flex justify-center items-center"
-                    onClick={() => console.log('Navigate to share')}
+                    onClick={() => {
+                        const shareUrl = encodeURIComponent("https://nanyang-ss9w.vercel.app");
+                        const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+                        window.location.href = facebookShareUrl;
+                    }}
                 >
-                    <img
-                        src="/image/share.png"
-                        alt="Share"
-                        className="w-full h-full object-contain"
-                    />
+                    <img src="/image/share.png" alt="Share" className="w-full h-full object-contain" />
                 </button>
+
+
             </div>
         </div>
     );

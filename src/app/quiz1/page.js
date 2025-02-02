@@ -5,12 +5,14 @@ import { useRouter } from "next/navigation";
 const kanit = Kanit({ subsets: ["thai"], weight: "700" });
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Cookies from "js-cookie";
 
 export default function QuizPage() {
   const router = useRouter();
   const [selectedButton, setSelectedButton] = useState(null);
   const [userId, setUserId] = useState(null);
   const [isNextButtonActive, setIsNextButtonActive] = useState(false); // State for button press effect
+  const [isEnglish, setIsEnglish] = useState(false);
 
   // ✅ ดึง `_id` จาก Cookie
   useEffect(() => {
@@ -56,15 +58,19 @@ export default function QuizPage() {
     }
   };
 
-  // ✅ ฟังก์ชันเมื่อคลิกปุ่ม Next
   const handleNextClick = (selectedButton) => {
     if (selectedButton !== null) {
       setIsNextButtonActive(true); // Set button to active state
-      router.push("/quiz2"); // Navigate after a short delay
+      router.push("/quiz2");
     } else {
       alert("กรุณาเลือกคำตอบก่อน");
     }
   };
+
+  useEffect(() => {
+    const language = Cookies.get("language");
+    setIsEnglish(language === "en");
+  }, []);
 
   return (
     <div
@@ -79,8 +85,6 @@ export default function QuizPage() {
       <div className="absolute top-10 w-[90%]">
         <img src="image/bar1.png" alt="Progress Bar" className="w-full" />
       </div>
-
-      {/* Question Section */}
       <div
         className="absolute top-[20%] text-center w-full"
         style={{
@@ -88,28 +92,34 @@ export default function QuizPage() {
         }}
       >
         <img
-          src="/image/q1.png" // 🔹 เปลี่ยนเป็น Path ของ PNG
+          src={isEnglish ? "/image/q1EN.png" : "/image/q1.png"} // ✅ เปลี่ยนรูปตาม isEnglish
           alt="คำถามที่ 1"
           className="w-[250px] sm:w-[300px] md:w-[400px] lg:w-[500px] mx-auto"
         />
       </div>
 
       {/* Options Section */}
-      <div className="space-y-4 sm:space-y-6 px-4 sm:px-6 md:px-8 lg:px-10 absolute transform -translate-y-[40%] sm:-translate-y-[40%] md:-translate-y-[45%] w-full">
+      <div className={isEnglish ? "space-y-4 sm:space-y-6 px-4 sm:px-6 md:px-8 lg:px-10 absolute transform -translate-y-[40%] sm:-translate-y-[40%] md:-translate-y-[30%] lg:-translate-y-[30%] w-full" : "space-y-4 sm:space-y-6 px-4 sm:px-6 md:px-8 lg:px-10 absolute transform -translate-y-[40%] sm:-translate-y-[40%] md:-translate-y-[40%] lg:-translate-y-[40%] w-full"}>
         {[
           {
-            img: "/image/1optionA.png",
-            imgSelected: "/image/1optionA_selected.png",
+            img: isEnglish ? "/image/1optionA_en.png" : "/image/1optionA.png",
+            imgSelected: isEnglish
+              ? "/image/1optionA_selected_en.png"
+              : "/image/1optionA_selected.png",
             answer: "A",
           },
           {
-            img: "/image/1optionB.png",
-            imgSelected: "/image/1optionB_selected.png",
+            img: isEnglish ? "/image/1optionB_en.png" : "/image/1optionB.png",
+            imgSelected: isEnglish
+              ? "/image/1optionB_selected_en.png"
+              : "/image/1optionB_selected.png",
             answer: "B",
           },
           {
-            img: "/image/1optionC.png",
-            imgSelected: "/image/1optionC_selected.png",
+            img: isEnglish ? "/image/1optionC_en.png" : "/image/1optionC.png",
+            imgSelected: isEnglish
+              ? "/image/1optionC_selected_en.png"
+              : "/image/1optionC_selected.png",
             answer: "C",
           },
         ].map((button, index) => (
@@ -158,7 +168,7 @@ export default function QuizPage() {
         }}
       >
         <div className="w-[150px] sm:w-[180px] md:w-[200px] lg:w-[250px] bottom-[-120px] sm:bottom-[-120px] md:bottom-[-76px] lg:bottom-[-100px] absolute">
-          <img
+        <img
             src="image/tree.png"
             alt="Plant illustration"
             className="w-full h-full object-contain"
@@ -166,7 +176,6 @@ export default function QuizPage() {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="absolute w-full bottom-[60px] sm:bottom-[60px] md:bottom-[80px] lg:bottom-[100px] px-0 flex flex-col items-center z-50">
         <button
           onClick={() => handleNextClick(selectedButton)}
@@ -183,15 +192,14 @@ export default function QuizPage() {
             className="w-[60px] sm:w-[60px] md:w-[120px] lg:w-[140px]"
           />
         </button>
-      </div>
-      <div className="absolute w-full bottom-0">
+        </div>
+        <div className="absolute w-full bottom-0">
         <img
-          src="image/footer.png"
-          alt="Footer Decoration"
-          className="w-full h-auto object-cover"
-        />
-      </div>
-      {/* CSS Animations */}
+            src="image/footer.png"
+            alt="Footer Decoration"
+            className="w-full h-auto object-cover"
+          />
+        </div>
       <style jsx>{`
         @keyframes drop {
           0% {

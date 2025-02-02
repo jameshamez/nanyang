@@ -1,20 +1,25 @@
 "use client";
 import { Kanit } from "next/font/google";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter } from "next/navigation"; // ✅ ใช้ useRouter แทน useNavigate()
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 const kanit = Kanit({ subsets: ["thai"], weight: "700" });
 
 export default function QuizPage() {
   const router = useRouter();
   const [isButtonActive, setIsButtonActive] = useState(false);
+  const [isEnglish, setIsEnglish] = useState(false);
 
   const handleStartButtonClick = () => {
     setIsButtonActive(true);
-    setTimeout(() => {
-      router.push("/quiz1");
-    }, 200); // Delay for 200ms to show the active state
+    router.push("/quiz1");
   };
+
+  useEffect(() => {
+    const language = Cookies.get("language");
+    setIsEnglish(language === "en");
+  }, []);
 
   return (
     <div
@@ -42,7 +47,6 @@ export default function QuizPage() {
           className="w-60 sm:w-80 md:w-100 lg:w-100"
         />
       </div>
-
       {/* ☁️ ก้อนเมฆเคลื่อนไหว */}
       <div className="absolute top-10 left-[-100px] animate-cloudMove z-30">
         <img

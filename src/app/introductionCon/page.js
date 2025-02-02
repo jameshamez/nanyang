@@ -123,11 +123,7 @@ export default function Introduction() {
         </div>
 
         {/* Work Description Input Overlay */}
-        <div
-            className={`absolute ${
-                isEnglish ? "top-[190px]" : "top-[204px] sm:top-[234px] md:top-[260px] lg:top-[320px]"
-            } left-1/2 transform -translate-x-1/2 w-[280px] sm:w-[280px] md:w-[300px] lg:w-[360px] h-[60px]`}
-        >
+        <div className={isEnglish ? "absolute top-[188px] sm:top-[188px] md:top-[240px] lg:top-[295px] left-1/2 transform -translate-x-1/2 w-[280px] sm:w-[280px] md:w-[300px] lg:w-[360px] h-[60px]" : "absolute top-[202px] sm:top-[188px] md:top-[262px] lg:top-[320px] left-1/2 transform -translate-x-1/2 w-[280px] sm:w-[280px] md:w-[300px] lg:w-[360px] h-[60px]"}>
         <input
             type="text"
             placeholder={
@@ -144,7 +140,7 @@ export default function Introduction() {
 
         {/* Sectors */}
         <div
-          className={`absolute top-[380px] sm:top-[410px] md:top-[450px] lg:top-[540px] ${
+          className={`absolute top-[360px] sm:top-[410px] md:top-[450px] lg:top-[540px] ${
             isEnglish
               ? "left-[134px] sm:left-[170px] md:left-[184px] lg:left-[200px]"
               : "left-[130px] sm:left-[150px] md:left-[180px] lg:left-[180px]"

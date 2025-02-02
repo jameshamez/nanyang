@@ -25,9 +25,7 @@ export default function Introduction() {
 
     if (!name || !selectedGender || !selectedAge || !selectedOccupation) {
       alert(
-        isEnglish
-          ? "Please fill out all fields"
-          : "Please fill out all fields"
+        isEnglish ? "Please fill out all fields" : "Please fill out all fields"
       );
       return;
     }
@@ -105,22 +103,20 @@ export default function Introduction() {
 
         {/* Name Label */}
         <div
-            className={`absolute ${
-                isEnglish ? "top-8 sm:top-8" : "top-5 sm:top-5"
-            } md:top-8 left-1/2 transform -translate-x-1/2`}
+          className={`absolute ${isEnglish ? "top-8 sm:top-8 md:top-8 left-1/2 transform -translate-x-1/2" : "top-5 sm:top-5 md:top-8 left-1/2 transform -translate-x-1/2"}`}
         >
           {isEnglish ? (
-              <img
-                  src="/introduction/nameLabelEN.png"
-                  alt="Name Label"
-                  className="w-[200px] sm:w-[140px] md:w-[160px] lg:w-[200px] h-auto max-w-none"
-              />
+            <img
+              src="/introduction/nameLabelEN.png"
+              alt="Name Label"
+              className="w-[140px] sm:w-[140px] md:w-[180px] lg:w-[280px] h-auto max-w-none"
+            />
           ) : (
-              <img
-                  src="/introduction/nameLabel.png"
-                  alt="Name Label"
-                  className="w-[120px] sm:w-[140px] md:w-[160px] lg:w-[200px] h-auto max-w-none"
-              />
+            <img
+              src="/introduction/nameLabel.png"
+              alt="Name Label"
+              className="w-[120px] sm:w-[100px] md:w-[140px] lg:w-[180px] h-auto max-w-none"
+            />
           )}
         </div>
 
@@ -205,19 +201,26 @@ export default function Introduction() {
 
         {/* Age Label */}
         <div
-            className="absolute left-1/2 transform -translate-x-1/2"
-            style={{
-              top: isEnglish ? "9rem" : "10rem", // ✅ ปรับตำแหน่ง `top`
-              paddingTop: isEnglish ? "1.5rem" : "0rem" // ✅ เพิ่ม Padding-Top
-            }}
+          className={`absolute left-1/2 transform -translate-x-1/2 
+              ${
+                isEnglish
+                  ? "top-[9rem] md:top-[10.5rem] lg:top-[12.5rem]"
+                  : "top-[10rem] md:top-[11.5rem] lg:top-[13rem]"
+              } 
+              ${
+                isEnglish
+                  ? "pt-[1.5rem] md:pt-[2rem] lg:pt-[2.5rem]"
+                  : "pt-[0rem] md:pt-[0.5rem] lg:pt-[1rem]"
+              }`}
         >
           <img
-              src={isEnglish ? "/introduction/ageEN.png" : "/introduction/age.png"}
-              alt="Age"
-              className="w-[36px] sm:w-[40px] md:w-[48px] lg:w-[56px] max-w-none"
+            src={
+              isEnglish ? "/introduction/ageEN.png" : "/introduction/age.png"
+            }
+            alt="Age"
+            className={isEnglish ? "w-[28px] sm:w-[28px] md:w-[36px] lg:w-[48px] max-w-none" : "w-[36px] sm:w-[40px] md:w-[48px] lg:w-[56px] max-w-none"}
           />
         </div>
-
 
         {/* Age Range Icons */}
         <div className="absolute top-48 sm:top-52 md:top-60 lg:top-[280px] left-1/2 transform -translate-x-1/2 w-[240px] sm:w-[280px] md:w-[300px]">
@@ -265,7 +268,7 @@ export default function Introduction() {
         </div>
 
         {/* Occupation Label */}
-        <div className="absolute top-[310px] sm:top-[320px] md:top-[360px] lg:top-[420px] left-1/2 transform -translate-x-1/2">
+        <div className={isEnglish ? "absolute top-[310px] sm:top-[310px] md:top-[365px] lg:top-[440px] left-1/2 transform -translate-x-1/2" : "absolute top-[310px] sm:top-[320px] md:top-[360px] lg:top-[420px] left-1/2 transform -translate-x-1/2" }>
           <img
             src={
               isEnglish
@@ -273,7 +276,7 @@ export default function Introduction() {
                 : "/introduction/occupation.png"
             }
             alt="Occupation"
-            className="w-[120px] sm:w-[100px] md:w-[140px] lg:w-[160px] max-w-none"
+            className={isEnglish ? "w-[120px] sm:w-[100px] md:w-[140px] lg:w-[160px] max-w-none" : "w-[120px] sm:w-[100px] md:w-[140px] lg:w-[160px] max-w-none"}
           />
         </div>
 
