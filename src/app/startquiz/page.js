@@ -120,11 +120,15 @@ export default function QuizPage() {
           onClick={handleStartButtonClick}
         >
           <img
-            src={
-              isButtonActive
-                ? "/startQuiz/buttonstartActive.png"
-                : "/startQuiz/buttonstart.png"
-            }
+              src={
+                isEnglish
+                    ? (isButtonActive
+                        ? "/image/startENH.png"
+                        : "/image/startEN.png")
+                    : (isButtonActive
+                        ? "/startQuiz/buttonstartActive.png"
+                        : "/startQuiz/buttonstart.png")
+              }
             alt="ECO TYPE INSIGHT"
             className="w-full h-full object-contain"
           />
