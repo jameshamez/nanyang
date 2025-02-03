@@ -84,7 +84,6 @@ export default function QuizPage() {
         const data = await response.json();
         console.log("✅ User assigned to group:", data.targetPage);
 
-        // ✅ 2. นำทางไปหน้าที่เหมาะสม
         router.push(data.targetPage);
       } else {
         console.error("❌ Failed to assign group");
