@@ -42,9 +42,9 @@ export default function QuizPage() {
       {/* Scenario Text Image */}
       <div className="absolute top-[-180px] sm:top-[-180px] md:top-[-180px] lg:top-[-180px] inset-0 z-40 flex items-center justify-center">
         <img
-          src="/startQuiz/scenarioText.png"
-          alt="Scenario Text"
-          className="w-60 sm:w-80 md:w-100 lg:w-100"
+            src={isEnglish ? "/image/scenarioTextEN.png" : "/startQuiz/scenarioText.png"}
+            alt="Scenario Text"
+            className="w-60 sm:w-80 md:w-[100px] lg:w-[100px]"
         />
       </div>
       {/* ☁️ ก้อนเมฆเคลื่อนไหว */}
