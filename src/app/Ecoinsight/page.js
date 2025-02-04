@@ -50,7 +50,7 @@ export default function GroupsPage() {
 
     return (
         <div
-            className="min-h-screen flex flex-col items-center justify-center p-10 relative"
+            className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden"
             style={{
                 backgroundImage: "url(/image/bginsight.png)",
                 backgroundSize: "cover",
@@ -85,16 +85,48 @@ export default function GroupsPage() {
                     className="w-64 h-auto mx-auto mb-4 z-10 relative"
                 />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-1 gap-10 items-center">
+            <div className="flex items-center justify-end relative">
+                <motion.div
+                    className="relative flex items-center justify-center rounded-full shadow-md"
+                    animate={{ y: [0, -10, 10, -5, 5, 0], x: [0, 5, -5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, repeatType: "mirror" }}
+                    style={{
+                        width: `100px`,
+                        height: `100px`,
+                        top: "5px",
+                    }}
+                >
+                    <img
+                        src="/image/recycledpolyester.png"
+                        alt="Recycled Polyester"
+                        className="object-cover rounded-full w-full h-full"
+                    />
+                    <div className="absolute flex items-center justify-center w-full h-full">
+                <span
+                    className="text-black font-bold"
+                    style={{
+                        fontSize: `${12 + groupPercentages.RecycledPolyester / 3}px`,
+                        position: "absolute",
+                        color: "#509776",
+                        transform: `translateY(${-160 + groupPercentages.RecycledPolyester / 2}%)`
+                    }}
+                >
+                    {groupPercentages.RecycledPolyester}%
+                </span>
+                    </div>
+                </motion.div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-6 items-center">
                 {/* ✅ Recycled Cotton - ซ้าย */}
-                <div className="flex items-center justify-start relative">
+                <div className="relative w-full h-[10px] flex flex-col items-center">
                     <motion.div
                         className="relative flex items-center justify-center rounded-full shadow-md"
                         animate={{ y: [0, -10, 10, -5, 5, 0], x: [0, 5, -5, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, repeatType: "mirror" }}
                         style={{
                             width: `${100 + groupPercentages.RecycledCotton}px`,
-                            height: `${100 + groupPercentages.RecycledCotton}px`
+                            height: `${100 + groupPercentages.RecycledCotton}px`,
+                            left: "50px",
                         }}
                     >
                         <img
@@ -108,6 +140,7 @@ export default function GroupsPage() {
                     style={{
                         fontSize: `${12 + groupPercentages.RecycledCotton / 3}px`,
                         position: "absolute",
+                        color: "#22989E",
                         transform: `translateY(${-140 + groupPercentages.RecycledCotton / 2}%)`
                     }}
                 >
@@ -117,36 +150,7 @@ export default function GroupsPage() {
                     </motion.div>
                 </div>
 
-                {/* ✅ Recycled Polyester - ขวา */}
-                <div className="flex items-center justify-end relative">
-                    <motion.div
-                        className="relative flex items-center justify-center rounded-full shadow-md"
-                        animate={{ y: [0, -10, 10, -5, 5, 0], x: [0, 5, -5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity, repeatType: "mirror" }}
-                        style={{
-                            width: `${100 + groupPercentages.RecycledPolyester}px`,
-                            height: `${100 + groupPercentages.RecycledPolyester}px`
-                        }}
-                    >
-                        <img
-                            src="/image/recycledpolyester.png"
-                            alt="Recycled Polyester"
-                            className="object-cover rounded-full w-full h-full"
-                        />
-                        <div className="absolute flex items-center justify-center w-full h-full">
-                <span
-                    className="text-black font-bold"
-                    style={{
-                        fontSize: `${12 + groupPercentages.RecycledPolyester / 3}px`,
-                        position: "absolute",
-                        transform: `translateY(${-160 + groupPercentages.RecycledPolyester / 2}%)`
-                    }}
-                >
-                    {groupPercentages.RecycledPolyester}%
-                </span>
-                        </div>
-                    </motion.div>
-                </div>
+
 
                 {/* ✅ Eco Produced - ซ้าย */}
                 <div className="flex items-center justify-start relative">
@@ -156,7 +160,7 @@ export default function GroupsPage() {
                         transition={{ duration: 1.5, repeat: Infinity, repeatType: "mirror" }}
                         style={{
                             width: `${100 + groupPercentages.EcoProduced}px`,
-                            height: `${100 + groupPercentages.EcoProduced}px`
+                            height: `${100 + groupPercentages.EcoProduced}px`,
                         }}
                     >
                         <img
@@ -170,6 +174,7 @@ export default function GroupsPage() {
                     style={{
                         fontSize: `${12 + groupPercentages.EcoProduced / 3}px`,
                         position: "absolute",
+                        color: "#39B14D",
                         transform: `translateY(${-140 + groupPercentages.EcoProduced / 2}%)`
                     }}
                 >
@@ -187,7 +192,9 @@ export default function GroupsPage() {
                         transition={{ duration: 1.5, repeat: Infinity, repeatType: "mirror" }}
                         style={{
                             width: `${100 + groupPercentages.GreenTech}px`,
-                            height: `${100 + groupPercentages.GreenTech}px`
+                            height: `${100 + groupPercentages.GreenTech}px`,
+                            top:"-10px",
+                            left: "50px",
                         }}
                     >
                         <img
@@ -201,22 +208,16 @@ export default function GroupsPage() {
                     style={{
                         fontSize: `${12 + groupPercentages.GreenTech / 3}px`,
                         position: "absolute",
+                        color:"#314397",
                         transform: `translateY(${-140 + groupPercentages.GreenTech / 2}%)`
                     }}
                 >
                     {groupPercentages.GreenTech}%
                 </span>
+
                         </div>
                     </motion.div>
                 </div>
-            </div>
-
-
-
-
-            {/* ✅ ใบไม้พริ้วไหวที่ Footer (ซ้ายและขวา) */}
-            <footer className="absolute bottom-0 w-full h-45 flex justify-between items-end px-10">
-                {/* 🍃 ใบไม้ด้านซ้าย */}
                 <motion.img
                     src="/image/leftinsight.png"
                     alt="Swinging Left Leaf"
@@ -248,7 +249,9 @@ export default function GroupsPage() {
                         ease: "easeInOut",
                     }}
                 />
-            </footer>
+            </div>
+
+
         </div>
     );
 }
