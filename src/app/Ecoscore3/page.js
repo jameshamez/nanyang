@@ -116,12 +116,12 @@ export default function QuizPage() {
                     <button
                         className="w-[40px] h-[40px] flex justify-center items-center"
                         onClick={() => {
-                            const shareUrl = encodeURIComponent("https://nanyang-ss9w.vercel.app");
-                            const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
-                            window.location.href = facebookShareUrl;
+                            const shareUrl = "https://nanyang-ss9w.vercel.app"; // 🔗 URL ของเกม
+                            const instagramStoryUrl = `https://www.instagram.com/stories/create?url=${encodeURIComponent(shareUrl)}`;
+                            window.open(instagramStoryUrl, "_blank"); // ✅ เปิด Instagram Stories พร้อมใส่ลิงก์
                         }}
                     >
-                        <img src="/image/instagram.png" alt="Share" className="w-full h-full object-contain" />
+                        <img src="/image/instagram.png" alt="Share to Instagram" className="w-full h-full object-contain" />
                     </button>
                 </div>
             </motion.div>
