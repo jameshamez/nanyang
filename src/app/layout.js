@@ -16,12 +16,12 @@ export const metadata = {
     title: "Nan Yang Textile Group",
     description: "ฉันได้คะแนน XX% ใน ECO Quiz! มาดูกันว่าคุณจะได้เท่าไหร่!",
     openGraph: {
-        url: "https://nanyang-jl85.vercel.app/result",
+        url: "https://nanyang-james24.vercel.app",
         title: "ค้นหา Eco Type ในตัวคุณ!",
         description: "ฉันได้ Eco Type เป็นสายธรรมชาติ! มาดูกันว่าคุณจะได้ Eco Type สายไหน!",
         images: [
             {
-                url: "https://nanyang-james23.vercel.app/image/s1.png",
+                url: "https://nanyang-james24.vercel.app/image/s1.png",
                 width: 500,
                 height: 500,
                 alt: "ECO Quiz Score",
