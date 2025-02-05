@@ -12,6 +12,25 @@ const geistMono = Geist_Mono({
     subsets: ["latin"],
 });
 
+export const metadata = {
+    title: "Nan Yang Textile Group",
+    description: "ฉันได้คะแนน XX% ใน ECO Quiz! มาดูกันว่าคุณจะได้เท่าไหร่!",
+    openGraph: {
+        url: "https://nanyang-jl85.vercel.app/result",
+        title: "ฉันได้คะแนน XX% ใน ECO Quiz! มาดูกันว่าคุณจะได้เท่าไหร่!",
+        description: "ฉันได้คะแนน XX% ใน ECO Quiz! มาดูกันว่าคุณจะได้เท่าไหร่!",
+        images: [
+            {
+                url: "https://nanyang-jl85.vercel.app/image/ecoscore1.png",
+                width: 500,
+                height: 500,
+                alt: "ECO Quiz Score",
+            },
+        ],
+        type: "website",
+    },
+};
+
 export default function RootLayout({ children }) {
     return (
         <html lang="th">
