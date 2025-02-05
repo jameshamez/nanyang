@@ -21,7 +21,7 @@ export const metadata = {
         description: "Nan Yang Textile Group",
         images: [
             {
-                url: "https://nanyang-jl85.vercel.app/image/score1.png",
+                url: "https://nanyang-jl85.vercel.app/image/ecoscore1.png",
                 width: 1200,
                 height: 630,
                 alt: "ECO Quiz Score",
@@ -48,16 +48,17 @@ export default function RootLayout({ children }) {
             <meta property="og:type" content="website" />
             <meta property="og:title" content="Nan Yang Textile Group" />
             <meta property="og:description" content="ฉันได้คะแนน XX% ใน ECO Quiz! มาดูกันว่าคุณจะได้เท่าไหร่!" />
-            <meta property="og:image" content="https://nanyang-jl85.vercel.app/image/score1.png" />
+            <meta property="og:image" content="https://nanyang-jl85.vercel.app/image/ecoscore1.png" />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
             <meta property="og:locale" content="th_TH" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
             {/* ✅ Twitter Meta Tags */}
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content="Nan Yang Textile Group" />
             <meta name="twitter:description" content="ฉันได้คะแนน XX% ใน ECO Quiz! มาดูกันว่าคุณจะได้เท่าไหร่!" />
-            <meta name="twitter:image" content="https://nanyang-jl85.vercel.app/image/score1.png" />
+            <meta name="twitter:image" content="https://nanyang-jl85.vercel.app/image/ecoscore1.png" />
         </Head>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
