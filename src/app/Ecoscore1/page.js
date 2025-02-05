@@ -43,7 +43,7 @@ export default function QuizPage() {
         }}
       >
         {/* Container that centers content both vertically and horizontally */}
-        <div className="absolute inset-0 flex flex-col justify-center items-center gap-4 z-10">
+        <div className="absolute inset-0 flex flex-col justify-center items-center gap-2 z-10">
           {/* Eco Score Card Image */}
           <img
             src={isEnglish ? "/image/ecoscore1EN.png" : "/image/ecoscore1.png"}

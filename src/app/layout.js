@@ -23,7 +23,7 @@ export const metadata = {
             {
                 url: "https://nanyang-james24.vercel.app/image/s1.png",
                 width: 500,
-                height: 500,
+                height: 10024,
                 alt: "ECO Quiz Score",
             },
         ],
