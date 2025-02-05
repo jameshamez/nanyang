@@ -69,7 +69,7 @@ export default function QuizPage() {
             <button
               className="h-[40px] sm:h-[40px] md:h-[55px] lg:h-[80px] flex justify-center items-center"
               onClick={() => {
-                const facebookShareUrl = `https://www.facebook.com/dialog/feed?app_id=653004017158901&display=popup&link=${encodeURIComponent("https://nanyang-jl85.vercel.app")}&picture=${encodeURIComponent("https://nanyang-jl85.vercel.app/image/ecoscore1.png")}&name=${encodeURIComponent("นี่คือหัวข้อโพสต์")}&caption=${encodeURIComponent("ตัวอย่างโพสต์จาก Graph API")}&description=${encodeURIComponent("นี่คือรายละเอียดของโพสต์")}&redirect_uri=${encodeURIComponent("https://nanyang-jl85.vercel.app/callback")}`;
+                const facebookShareUrl = `https://www.facebook.com/dialog/feed?app_id=653004017158901&display=popup&link=${encodeURIComponent("https://nanyang-jo3c.vercel.app")}&picture=${encodeURIComponent("https://nanyang-jl85.vercel.app/image/ecoscore1.png")}&name=${encodeURIComponent("นี่คือหัวข้อโพสต์")}&caption=${encodeURIComponent("ตัวอย่างโพสต์จาก Graph API")}&description=${encodeURIComponent("นี่คือรายละเอียดของโพสต์")}&redirect_uri=${encodeURIComponent("https://nanyang-jl85.vercel.app/callback")}`;
                 window.open(facebookShareUrl, "_blank", "width=600,height=400");
               }}
             >

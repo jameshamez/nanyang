@@ -17,13 +17,13 @@ export const metadata = {
     description: "ฉันได้คะแนน XX% ใน ECO Quiz! มาดูกันว่าคุณจะได้เท่าไหร่!",
     openGraph: {
         url: "https://nanyang-jl85.vercel.app/result",
-        title: "Nan Yang Textile Group",
-        description: "Nan Yang Textile Group",
+        title: "ฉันได้คะแนน XX% ใน ECO Quiz! มาดูกันว่าคุณจะได้เท่าไหร่!",
+        description: "ฉันได้คะแนน XX% ใน ECO Quiz! มาดูกันว่าคุณจะได้เท่าไหร่!",
         images: [
             {
                 url: "https://nanyang-jl85.vercel.app/image/ecoscore1.png",
-                width: 1200,
-                height: 630,
+                width: 500,
+                height: 500,
                 alt: "ECO Quiz Score",
             },
         ],
