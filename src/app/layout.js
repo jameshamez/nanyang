@@ -43,6 +43,7 @@ export default function RootLayout({ children }) {
             <meta name="theme-color" content="#ffffff" />
 
             {/* ✅ Open Graph Meta Tags */}
+            <meta property="fb:app_id" content="653004017158901"></meta>
             <meta property="og:url" content="https://nanyang-ss9w.vercel.app" />
             <meta property="og:type" content="website" />
             <meta property="og:title" content="Nan Yang Textile Group" />
