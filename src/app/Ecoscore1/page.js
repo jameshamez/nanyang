@@ -52,7 +52,7 @@ export default function QuizPage() {
           />
 
           {/* Bottom Buttons Container */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center">
             {/* ECO TYPE INSIGHT Button */}
             <button
               className="h-[40px] sm:h-[40px] md:h-[55px] lg:h-[80px] flex justify-center items-center"
