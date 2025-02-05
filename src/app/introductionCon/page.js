@@ -101,11 +101,11 @@ export default function Introduction() {
       {/* Introduction Panel */}
       <div className="absolute top-[51%] md:top-[52%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
         <img
-            src={
-              isEnglish
-                  ? "/introductionCon/PanelEN.png"
-                  : "/introductionCon/Panel.png"
-            }
+          src={
+            isEnglish
+              ? "/introductionCon/PanelEN.png"
+              : "/introductionCon/Panel.png"
+          }
           alt="Introduction Panel"
           className="w-[320px] sm:w-[360px] md:w-[400px] lg:w-[480px] max-w-none"
         />
@@ -123,8 +123,14 @@ export default function Introduction() {
         </div>
 
         {/* Work Description Input Overlay */}
-        <div className={isEnglish ? "absolute top-[188px] sm:top-[188px] md:top-[240px] lg:top-[295px] left-1/2 transform -translate-x-1/2 w-[280px] sm:w-[280px] md:w-[300px] lg:w-[360px] h-[60px]" : "absolute top-[202px] sm:top-[188px] md:top-[262px] lg:top-[320px] left-1/2 transform -translate-x-1/2 w-[280px] sm:w-[280px] md:w-[300px] lg:w-[360px] h-[60px]"}>
-        <input
+        <div
+          className={
+            isEnglish
+              ? "absolute top-[188px] sm:top-[188px] md:top-[240px] lg:top-[295px] left-1/2 transform -translate-x-1/2 w-[280px] sm:w-[280px] md:w-[300px] lg:w-[360px] h-[60px]"
+              : "absolute top-[202px] sm:top-[188px] md:top-[262px] lg:top-[320px] left-1/2 transform -translate-x-1/2 w-[280px] sm:w-[280px] md:w-[300px] lg:w-[360px] h-[60px]"
+          }
+        >
+          <input
             type="text"
             placeholder={
               isEnglish
@@ -148,10 +154,10 @@ export default function Introduction() {
         >
           {/* First row */}
           <div
-            className={`grid gap-4 ${
+            className={`grid ${
               isEnglish
-                ? "grid-cols-[80px_58px_0px] sm:grid-cols-[80px_100px_0px] md:grid-cols-[90px_70px_0px] lg:grid-cols-[110px_84px_0px]"
-                : "grid-cols-[60px_78px_0px] sm:grid-cols-[70px_80px_0px] md:grid-cols-[80px_90px_0px] lg:grid-cols-[100px_110px_0px]"
+                ? "lg:ml-[-10px] gap-3 justify-items-center grid-cols-[auto_50px_auto] sm:grid-cols-[auto_50px_auto] md:grid-cols-[auto_80px_auto] lg:grid-cols-[auto_90px_auto]"
+                : "gap-4 grid-cols-[60px_78px_0px] sm:grid-cols-[70px_80px_0px] md:grid-cols-[80px_90px_0px] lg:grid-cols-[100px_110px_0px]"
             }`}
           >
             {["tech", "finance", "consumerable"].map((sector) => (
@@ -171,10 +177,10 @@ export default function Introduction() {
 
           {/* Second row */}
           <div
-            className={`grid gap-16 mt-4 ${
+            className={`grid mt-4 ${
               isEnglish
-                ? "grid-cols-[20px_30px_0px] sm:grid-cols-[22px_80px_32px] md:grid-cols-[36px_44px_0px] lg:grid-cols-[52px_90px_0px]"
-                : "grid-cols-[14px_64px_30px] sm:grid-cols-[20px_60px_30px] md:grid-cols-[34px_74px_0px] lg:grid-cols-[50px_100px_0px]"
+                ? "ml-[-10px] sm:ml-[-10px] md:ml-[0px] lg:ml-[0px] gap-2 sm:gap-2 md:gap-4 lg:gap-8 justify-items-center grid-cols-[120px_30px_140px] sm:grid-cols-[120px_30px_140px] md:grid-cols-[120px_30px_140px] lg:grid-cols-[120px_30px_140px]"
+                : "gap-16 grid-cols-[14px_64px_30px] sm:grid-cols-[20px_60px_30px] md:grid-cols-[34px_74px_0px] lg:grid-cols-[50px_100px_0px]"
             }`}
           >
             {["labor", "industrial", "resources"].map((sector) => (
@@ -194,10 +200,10 @@ export default function Introduction() {
 
           {/* Third row */}
           <div
-            className={`grid gap-0 mt-4 ${
+            className={`grid mt-4 ${
               isEnglish
-                ? "grid-cols-[112px_0px] sm:grid-cols-[112px_0px] md:grid-cols-[132px_0px] lg:grid-cols-[152px_0px]"
-                : "grid-cols-[112px_0px] sm:grid-cols-[110px_0px] md:grid-cols-[120px_0px] lg:grid-cols-[140px_0px]"
+                ? "ml-6 gap-2 grid-cols-[88px_0px] sm:grid-cols-[88px_0px] md:grid-cols-[100px_0px] lg:grid-cols-[120px_0px]"
+                : "gap-0 grid-cols-[112px_0px] sm:grid-cols-[110px_0px] md:grid-cols-[120px_0px] lg:grid-cols-[140px_0px]"
             }`}
           >
             {["realEstate", "agriculture"].map((sector) => (
