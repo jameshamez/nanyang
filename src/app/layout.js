@@ -21,7 +21,7 @@ export const metadata = {
         description: "ฉันได้ Eco Type เป็นสายธรรมชาติ! มาดูกันว่าคุณจะได้ Eco Type สายไหน!",
         images: [
             {
-                url: "https://nanyang-james23.vercel.app/image/ecoscore1.png",
+                url: "https://nanyang-james23.vercel.app/image/s1.png",
                 width: 500,
                 height: 500,
                 alt: "ECO Quiz Score",
