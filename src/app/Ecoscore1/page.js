@@ -43,6 +43,7 @@ export default function QuizPage() {
         }}
       >
         {/* Container that centers content both vertically and horizontally */}
+          <div className="relative flex flex-col items-center justify-center w-full">
         <div className="absolute inset-0 flex flex-col justify-center items-center gap-4 z-10">
           {/* Eco Score Card Image */}
           <img
@@ -66,38 +67,54 @@ export default function QuizPage() {
             </button>
 
             {/* Share Button */}
-            <button
-              className="h-[40px] sm:h-[40px] md:h-[55px] lg:h-[80px] flex justify-center items-center"
-              onClick={() => {
-                  const facebookShareUrl = `https://www.facebook.com/dialog/feed?app_id=653004017158901&display=popup&link=https://nanyang-ss9w.vercel.app&picture=https://nanyang-ss9w.vercel.app/image/score1.png&name=${encodeURIComponent("นี่คือหัวข้อโพสต์")}&caption=${encodeURIComponent("ตัวอย่างโพสต์จาก Graph API")}&description=${encodeURIComponent("นี่คือรายละเอียดของโพสต์")}&redirect_uri=https://nanyang-ss9w.vercel.app/callback`;
+              <div className="flex items-center gap-2">
+                {/* Facebook Share Button */}
+                <button
+                    className="h-[40px] sm:h-[40px] md:h-[55px] lg:h-[80px] flex justify-center items-center"
+                    onClick={() => {
+                      const shareUrl = "https://nanyang-jl85.vercel.app";
+                      const imageUrl = "https://nanyang-jl85.vercel.app/image/score1.png";
 
-                  window.location.href = facebookShareUrl;
-              }}
-            >
-              <img
-                src="/image/facebook.png"
-                alt="Share"
-                className="w-full h-full object-contain"
-              />
-            </button>
+                      // 🔹 เปิดแอป Facebook ก่อน
+                      const facebookAppUrl = `fb://facewebmodal/f?href=${encodeURIComponent(shareUrl)}`;
+                      const fallbackUrl = `https://www.facebook.com/dialog/feed?app_id=653004017158901
+            &display=popup
+            &link=${encodeURIComponent(shareUrl)}
+            &picture=${encodeURIComponent(imageUrl)}
+            &name=${encodeURIComponent("นี่คือหัวข้อโพสต์")}
+            &caption=${encodeURIComponent("ตัวอย่างโพสต์จาก Graph API")}
+            &description=${encodeURIComponent("นี่คือรายละเอียดของโพสต์")}
+            &redirect_uri=${encodeURIComponent("https://nanyang-jl85.vercel.app/callback")}`;
 
-            {/* Instagram Share Button */}
-            <button
-              className="h-[40px] sm:h-[40px] md:h-[55px] lg:h-[80px] flex justify-center items-center"
-              onClick={() => {
-                const shareUrl = "https://nanyang-ss9w.vercel.app"; // 🔗 URL ของเกม
-                const instagramStoryUrl = `https://www.instagram.com/stories/create?url=${encodeURIComponent(
-                  shareUrl
-                )}`;
-                window.open(instagramStoryUrl, "_blank");
-              }}
-            >
-              <img
-                src="/image/instagram.png"
-                alt="Share to Instagram"
-                className="w-full h-full object-contain"
-              />
-            </button>
+                      // 🔹 ลองเปิดแอป Facebook ก่อน
+                      window.location.href = facebookAppUrl;
+
+                      // 🔹 ถ้าเปิดแอปไม่ได้ ให้ fallback ไปเว็บเบราว์เซอร์
+                      setTimeout(() => {
+                        window.open(fallbackUrl, "_blank", "width=600,height=400");
+                      }, 1000);
+                    }}
+                >
+                  <img src="/image/facebook.png" alt="Share to Facebook" className="w-full h-full object-contain" />
+                </button>
+
+                {/* Instagram Share Button */}
+                <button
+                    className="h-[40px] sm:h-[40px] md:h-[55px] lg:h-[80px] flex justify-center items-center"
+                    onClick={() => {
+                      const shareUrl = "https://nanyang-jl85.vercel.app";
+                      const instagramStoryUrl = `instagram://story-camera?AssetPath=${encodeURIComponent(shareUrl)}`;
+                      window.location.href = instagramStoryUrl;
+
+                      setTimeout(() => {
+                        window.open("https://www.instagram.com/", "_blank");
+                      }, 1000);
+                    }}
+                >
+                  <img src="/image/instagram.png" alt="Share to Instagram" className="w-full h-full object-contain" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 

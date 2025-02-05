@@ -16,12 +16,12 @@ export const metadata = {
     title: "Nan Yang Textile Group",
     description: "ฉันได้คะแนน XX% ใน ECO Quiz! มาดูกันว่าคุณจะได้เท่าไหร่!",
     openGraph: {
-        url: "https://nanyang-ss9w.vercel.app/result",
+        url: "https://nanyang-jl85.vercel.app/result",
         title: "Nan Yang Textile Group",
         description: "Nan Yang Textile Group",
         images: [
             {
-                url: "https://nanyang-ss9w.vercel.app/image/score1.png",
+                url: "https://nanyang-jl85.vercel.app/image/score1.png",
                 width: 1200,
                 height: 630,
                 alt: "ECO Quiz Score",
@@ -44,11 +44,11 @@ export default function RootLayout({ children }) {
 
             {/* ✅ Open Graph Meta Tags */}
             <meta property="fb:app_id" content="653004017158901"></meta>
-            <meta property="og:url" content="https://nanyang-ss9w.vercel.app" />
+            <meta property="og:url" content="https://nanyang-jl85.vercel.app" />
             <meta property="og:type" content="website" />
             <meta property="og:title" content="Nan Yang Textile Group" />
             <meta property="og:description" content="ฉันได้คะแนน XX% ใน ECO Quiz! มาดูกันว่าคุณจะได้เท่าไหร่!" />
-            <meta property="og:image" content="https://nanyang-ss9w.vercel.app/image/score1.png" />
+            <meta property="og:image" content="https://nanyang-jl85.vercel.app/image/score1.png" />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
             <meta property="og:locale" content="th_TH" />
@@ -57,7 +57,7 @@ export default function RootLayout({ children }) {
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content="Nan Yang Textile Group" />
             <meta name="twitter:description" content="ฉันได้คะแนน XX% ใน ECO Quiz! มาดูกันว่าคุณจะได้เท่าไหร่!" />
-            <meta name="twitter:image" content="https://nanyang-ss9w.vercel.app/image/score1.png" />
+            <meta name="twitter:image" content="https://nanyang-jl85.vercel.app/image/score1.png" />
         </Head>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
