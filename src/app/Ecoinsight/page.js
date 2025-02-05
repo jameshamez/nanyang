@@ -1,8 +1,15 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Cookies from "js-cookie";
 
 export default function GroupsPage() {
+  const [isEnglish, setIsEnglish] = useState(false);
+  useEffect(() => {
+    const language = Cookies.get("language");
+    setIsEnglish(language === "en");
+  }, []);
+
   const [groups, setGroups] = useState({
     RecycledCotton: [],
     RecycledPolyester: [],
@@ -35,10 +42,16 @@ export default function GroupsPage() {
 
   // Images for each group
   const groupImages = {
-    RecycledCotton: "/image/recycledcotton.png",
-    RecycledPolyester: "/image/recycledpolyester.png",
-    EcoProduced: "/image/ecoproduce.png",
-    GreenTech: "/image/greentech.png",
+    RecycledCotton: isEnglish
+      ? "/image/recycledcottonEN.png"
+      : "/image/recycledcotton.png",
+    RecycledPolyester: isEnglish
+      ? "/image/recycledpolyesterEN.png"
+      : "/image/recycledpolyester.png",
+    EcoProduced: isEnglish
+      ? "/image/ecoproduceEN.png"
+      : "/image/ecoproduce.png",
+    GreenTech: isEnglish ? "/image/greentechEN.png" : "/image/greentech.png",
   };
 
   return (
@@ -132,7 +145,7 @@ export default function GroupsPage() {
             />
             <div className="absolute flex items-center justify-center w-full h-full">
               <span
-                className="text-black font-bold text-[calc(18px+var(--recycled-cotton)/3)] 
+                className="font-bold text-[calc(18px+var(--recycled-cotton)/3)] 
         sm:text-[calc(18px+var(--recycled-cotton)/3)] 
         md:text-[calc(28px+var(--recycled-cotton)/3)] 
         lg:text-[calc(40px+var(--recycled-cotton)/3)] 
@@ -175,13 +188,13 @@ export default function GroupsPage() {
             />
             <div className="absolute flex items-center justify-center w-full h-full">
               <span
-                className="text-black font-bold text-[calc(18px+var(--recycled-polyester)/3)] 
+                className="font-bold text-[calc(18px+var(--recycled-polyester)/3)] 
       sm:text-[calc(18px+var(--recycled-polyester)/3)] 
       md:text-[calc(28px+var(--recycled-polyester)/3)] 
       lg:text-[calc(40px+var(--recycled-polyester)/3)]
       xl:text-[calc(44px+var(--recycled-polyester)/3)]
       2xl:text-[calc(100px+var(--recycled-polyester)/3)] 
-      text-[#509776] translate-y-[calc(-44px+var(--recycled-polyester)/2)] 
+      text-[#22989E] translate-y-[calc(-44px+var(--recycled-polyester)/2)] 
       sm:translate-y-[calc(-44px+var(--recycled-polyester)/2)] 
       md:translate-y-[calc(-64px+var(--recycled-polyester)/2)] 
       lg:translate-y-[calc(-76px+var(--recycled-polyester)/2)]
@@ -216,7 +229,7 @@ export default function GroupsPage() {
             />
             <div className="absolute flex items-center justify-center w-full h-full">
               <span
-                className="text-black font-bold text-[calc(18px+var(--eco-produced)/3)] 
+                className="font-bold text-[calc(18px+var(--eco-produced)/3)] 
         sm:text-[calc(18px+var(--eco-produced)/3)] 
         md:text-[calc(28px+var(--eco-produced)/3)] 
         lg:text-[calc(40px+var(--eco-produced)/3)]
@@ -227,7 +240,7 @@ export default function GroupsPage() {
         md:translate-y-[calc(-64px+var(--eco-produced)/2)] 
         lg:translate-y-[calc(-84px+var(--eco-produced)/2)]
         xl:translate-y-[calc(-92px+var(--eco-produced)/2)]
-        2xl:translate-y-[calc(-200px+var(--eco-produced)/2)]"
+        2xl:translate-y-[calc(-220px+var(--eco-produced)/2)]"
               >
                 {groupPercentages.EcoProduced}%
               </span>
@@ -257,7 +270,7 @@ export default function GroupsPage() {
             />
             <div className="absolute flex items-center justify-center w-full h-full">
               <span
-                className="text-black font-bold text-[calc(18px+var(--green-tech)/3)] 
+                className="font-bold text-[calc(18px+var(--green-tech)/3)] 
         sm:text-[calc(18px+var(--green-tech)/3)] 
         md:text-[calc(28px+var(--green-tech)/3)] 
         lg:text-[calc(40px+var(--green-tech)/3)]
