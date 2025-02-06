@@ -121,172 +121,194 @@ export default function GroupsPage() {
           {" "}
           {/* Recycled Cotton (Row 1, Col 1) */}
           <motion.div
-            className="flex items-center rounded-full shadow-md row-start-1 col-start-1 z-2 
-    w-[calc(150px+var(--recycled-cotton))] 
-    sm:w-[calc(150px+var(--recycled-cotton))] 
-    md:w-[calc(210px+var(--recycled-cotton))] 
-    lg:w-[calc(270px+var(--recycled-cotton))]
-    xl:w-[calc(300px+var(--recycled-cotton))]
-    2xl:w-[calc(800px+var(--recycled-cotton))]"
-            animate={{ y: [0, -10, 10, -5, 5, 0], x: [0, 5, -5, 0] }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "mirror",
-            }}
-            style={{
-              "--recycled-cotton": `${groupPercentages.RecycledCotton}px`,
-            }}
+              className="flex items-center rounded-full shadow-md row-start-1 col-start-1 z-2
+  w-[calc(150px+var(--recycled-cotton))]
+  sm:w-[calc(150px+var(--recycled-cotton))]
+  md:w-[calc(210px+var(--recycled-cotton))]
+  lg:w-[calc(270px+var(--recycled-cotton))]
+  xl:w-[calc(300px+var(--recycled-cotton))]
+  2xl:w-[calc(800px+var(--recycled-cotton))]"
+              animate={{
+                y: [0, -20 + Math.random() * 40, 20 - Math.random() * 40, -10, 10, 0],
+                x: [0, Math.random() * 15 - 7.5, Math.random() * 15 - 7.5, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2, // แต่ละ Bubble มีความเร็วต่างกัน
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+              }}
+              style={{
+                "--recycled-cotton": `${groupPercentages.RecycledCotton}px`,
+              }}
           >
             <img
-              src={groupImages.RecycledCotton}
-              alt="Recycled Cotton"
-              className="object-cover rounded-full w-full h-full"
+                src={groupImages.RecycledCotton}
+                alt="Recycled Cotton"
+                className="object-cover rounded-full w-full h-full"
             />
             <div className="absolute flex items-center justify-center w-full h-full">
-              <span
-                className="font-bold text-[calc(18px+var(--recycled-cotton)/3)] 
-        sm:text-[calc(18px+var(--recycled-cotton)/3)] 
-        md:text-[calc(28px+var(--recycled-cotton)/3)] 
-        lg:text-[calc(40px+var(--recycled-cotton)/3)] 
-        xl:text-[calc(44px+var(--recycled-cotton)/3)]
-        2xl:text-[calc(100px+var(--recycled-cotton)/3)]
-        text-[#509776] translate-y-[calc(-44px+var(--recycled-cotton)/2)] 
-        sm:translate-y-[calc(-44px+var(--recycled-cotton)/2)] 
-        md:translate-y-[calc(-64px+var(--recycled-cotton)/2)] 
-        lg:translate-y-[calc(-84px+var(--recycled-cotton)/2)]
-        xl:translate-y-[calc(-92px+var(--recycled-cotton)/2)]
-        2xl:translate-y-[calc(-240px+var(--recycled-cotton)/2)]"
-              >
-                {groupPercentages.RecycledCotton}%
-              </span>
+    <span
+        className="font-bold text-[calc(18px+var(--recycled-cotton)/3)]
+      sm:text-[calc(18px+var(--recycled-cotton)/3)]
+      md:text-[calc(28px+var(--recycled-cotton)/3)]
+      lg:text-[calc(40px+var(--recycled-cotton)/3)]
+      xl:text-[calc(44px+var(--recycled-cotton)/3)]
+      2xl:text-[calc(100px+var(--recycled-cotton)/3)]
+      text-[#509776] translate-y-[calc(-44px+var(--recycled-cotton)/2)]
+      sm:translate-y-[calc(-44px+var(--recycled-cotton)/2)]
+      md:translate-y-[calc(-64px+var(--recycled-cotton)/2)]
+      lg:translate-y-[calc(-84px+var(--recycled-cotton)/2)]
+      xl:translate-y-[calc(-92px+var(--recycled-cotton)/2)]
+      2xl:translate-y-[calc(-240px+var(--recycled-cotton)/2)]"
+    >
+      {groupPercentages.RecycledCotton}%
+    </span>
             </div>
           </motion.div>
           {/* Recycled Polyester (Row 2, Col 2) */}
-          <motion.div
-            className="flex items-center rounded-full shadow-md row-start-2 col-start-2 z-1
-        w-[calc(150px+var(--recycled-polyester))] 
-        sm:w-[calc(150px+var(--recycled-polyester))] 
-        md:w-[calc(210px+var(--recycled-polyester))] 
-        lg:w-[calc(270px+var(--recycled-polyester))]
-        xl:w-[calc(300px+var(--recycled-polyester))]
-        2xl:w-[calc(800px+var(--recycled-polyester))]"
-            animate={{ y: [0, -10, 10, -5, 5, 0], x: [0, 5, -5, 0] }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "mirror",
-            }}
-            style={{
-              "--recycled-polyester": `${groupPercentages.RecycledPolyester}px`,
-            }}
-          >
-            <img
-              src={groupImages.RecycledPolyester}
-              alt="Recycled Polyester"
-              className="object-cover rounded-full w-full h-full"
-            />
-            <div className="absolute flex items-center justify-center w-full h-full">
-              <span
-                className="font-bold text-[calc(18px+var(--recycled-polyester)/3)] 
-      sm:text-[calc(18px+var(--recycled-polyester)/3)] 
-      md:text-[calc(28px+var(--recycled-polyester)/3)] 
+            <motion.div
+                className="flex items-center rounded-full shadow-md row-start-2 col-start-2 z-1
+  w-[calc(150px+var(--recycled-polyester))]
+  sm:w-[calc(150px+var(--recycled-polyester))]
+  md:w-[calc(210px+var(--recycled-polyester))]
+  lg:w-[calc(270px+var(--recycled-polyester))]
+  xl:w-[calc(300px+var(--recycled-polyester))]
+  2xl:w-[calc(800px+var(--recycled-polyester))]"
+                animate={{
+                    y: [0, -20 + Math.random() * 40, 20 - Math.random() * 40, -10, 10, 0],
+                    x: [0, Math.random() * 15 - 7.5, Math.random() * 15 - 7.5, 0],
+                }}
+                transition={{
+                    duration: 3 + Math.random() * 2, // ความเร็วของแต่ละ Bubble แตกต่างกัน
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    ease: "easeInOut",
+                    delay: Math.random() * 2, // ให้เริ่มเคลื่อนที่ไม่พร้อมกัน
+                }}
+                style={{
+                    "--recycled-polyester": `${groupPercentages.RecycledPolyester}px`,
+                }}
+            >
+                <img
+                    src={groupImages.RecycledPolyester}
+                    alt="Recycled Polyester"
+                    className="object-cover rounded-full w-full h-full"
+                />
+                <div className="absolute flex items-center justify-center w-full h-full">
+    <span
+        className="font-bold text-[calc(18px+var(--recycled-polyester)/3)]
+      sm:text-[calc(18px+var(--recycled-polyester)/3)]
+      md:text-[calc(28px+var(--recycled-polyester)/3)]
       lg:text-[calc(40px+var(--recycled-polyester)/3)]
       xl:text-[calc(44px+var(--recycled-polyester)/3)]
-      2xl:text-[calc(100px+var(--recycled-polyester)/3)] 
-      text-[#22989E] translate-y-[calc(-44px+var(--recycled-polyester)/2)] 
-      sm:translate-y-[calc(-44px+var(--recycled-polyester)/2)] 
-      md:translate-y-[calc(-64px+var(--recycled-polyester)/2)] 
+      2xl:text-[calc(100px+var(--recycled-polyester)/3)]
+      text-[#22989E] translate-y-[calc(-44px+var(--recycled-polyester)/2)]
+      sm:translate-y-[calc(-44px+var(--recycled-polyester)/2)]
+      md:translate-y-[calc(-64px+var(--recycled-polyester)/2)]
       lg:translate-y-[calc(-76px+var(--recycled-polyester)/2)]
       xl:translate-y-[calc(-84px+var(--recycled-polyester)/2)]
       2xl:translate-y-[calc(-220px+var(--recycled-polyester)/2)]"
-              >
-                {groupPercentages.RecycledPolyester}%
-              </span>
-            </div>
-          </motion.div>
-          {/* Eco Produced (Row 3, Col 1) */}
-          <motion.div
-            className="flex items-center rounded-full shadow-md row-start-3 col-start-1 
-    w-[calc(150px+var(--eco-produced))] 
-    sm:w-[calc(150px+var(--eco-produced))] 
-    md:w-[calc(210px+var(--eco-produced))] 
-    lg:w-[calc(270px+var(--eco-produced))]
-    xl:w-[calc(300px+var(--eco-produced))]
-    2xl:w-[calc(800px+var(--eco-produced))]"
-            animate={{ y: [0, -10, 10, -5, 5, 0], x: [0, 5, -5, 0] }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "mirror",
-            }}
-            style={{ "--eco-produced": `${groupPercentages.EcoProduced}px` }}
-          >
-            <img
-              src={groupImages.EcoProduced}
-              alt="Eco Produced"
-              className="object-cover rounded-full w-full h-full"
-            />
-            <div className="absolute flex items-center justify-center w-full h-full">
-              <span
-                className="font-bold text-[calc(18px+var(--eco-produced)/3)] 
-        sm:text-[calc(18px+var(--eco-produced)/3)] 
-        md:text-[calc(28px+var(--eco-produced)/3)] 
-        lg:text-[calc(40px+var(--eco-produced)/3)]
-        xl:text-[calc(44px+var(--eco-produced)/3)]
-        2xl:text-[calc(100px+var(--eco-produced)/3)] 
-        text-[#39B14D] translate-y-[calc(-52px+var(--eco-produced)/2)] 
-        sm:translate-y-[calc(-52px+var(--eco-produced)/2)] 
-        md:translate-y-[calc(-64px+var(--eco-produced)/2)] 
-        lg:translate-y-[calc(-84px+var(--eco-produced)/2)]
-        xl:translate-y-[calc(-92px+var(--eco-produced)/2)]
-        2xl:translate-y-[calc(-220px+var(--eco-produced)/2)]"
-              >
-                {groupPercentages.EcoProduced}%
-              </span>
-            </div>
-          </motion.div>
-          {/* GreenTech (Row 4, Col 2) */}
-          <motion.div
-            className="flex items-center rounded-full shadow-md row-start-4 col-start-2 
-    w-[calc(150px+var(--green-tech))] 
-    sm:w-[calc(150px+var(--green-tech))] 
-    md:w-[calc(210px+var(--green-tech))] 
-    lg:w-[calc(270px+var(--green-tech))]
-    xl:w-[calc(300px+var(--green-tech))]
-    2xl:w-[calc(800px+var(--green-tech))]"
-            animate={{ y: [0, -10, 10, -5, 5, 0], x: [0, 5, -5, 0] }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "mirror",
-            }}
-            style={{ "--green-tech": `${groupPercentages.GreenTech}px` }}
-          >
-            <img
-              src={groupImages.GreenTech}
-              alt="Green Tech"
-              className="object-cover rounded-full w-full h-full"
-            />
-            <div className="absolute flex items-center justify-center w-full h-full">
-              <span
-                className="font-bold text-[calc(18px+var(--green-tech)/3)] 
-        sm:text-[calc(18px+var(--green-tech)/3)] 
-        md:text-[calc(28px+var(--green-tech)/3)] 
-        lg:text-[calc(40px+var(--green-tech)/3)]
-        xl:text-[calc(44px+var(--green-tech)/3)] 
-        2xl:text-[calc(100px+var(--green-tech)/3)]
-        text-[#314397] translate-y-[calc(-116px+var(--green-tech)/2)] 
-        sm:translate-y-[calc(-116px+var(--green-tech)/2)] 
-        md:translate-y-[calc(-132px+var(--green-tech)/2)] 
-        lg:translate-y-[calc(-148px+var(--green-tech)/2)]
-        xl:translate-y-[calc(-160px+var(--green-tech)/2)]
-        2xl:translate-y-[calc(-300px+var(--green-tech)/2)]"
-              >
-                {groupPercentages.GreenTech}%
-              </span>
-            </div>
-          </motion.div>
+    >
+      {groupPercentages.RecycledPolyester}%
+    </span>
+                </div>
+            </motion.div>
+
+            {/* Eco Produced (Row 3, Col 1) */}
+            <motion.div
+                className="flex items-center rounded-full shadow-md row-start-3 col-start-1
+  w-[calc(150px+var(--eco-produced))]
+  sm:w-[calc(150px+var(--eco-produced))]
+  md:w-[calc(210px+var(--eco-produced))]
+  lg:w-[calc(270px+var(--eco-produced))]
+  xl:w-[calc(300px+var(--eco-produced))]
+  2xl:w-[calc(800px+var(--eco-produced))]"
+                animate={{
+                    y: [0, -20 + Math.random() * 40, 20 - Math.random() * 40, -10, 10, 0],
+                    x: [0, Math.random() * 15 - 7.5, Math.random() * 15 - 7.5, 0],
+                }}
+                transition={{
+                    duration: 3 + Math.random() * 2, // ความเร็วของแต่ละ Bubble แตกต่างกัน
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    ease: "easeInOut",
+                    delay: Math.random() * 2, // ให้แต่ละ Bubble เริ่มต้นต่างกัน
+                }}
+                style={{ "--eco-produced": `${groupPercentages.EcoProduced}px` }}
+            >
+                <img
+                    src={groupImages.EcoProduced}
+                    alt="Eco Produced"
+                    className="object-cover rounded-full w-full h-full"
+                />
+                <div className="absolute flex items-center justify-center w-full h-full">
+    <span
+        className="font-bold text-[calc(18px+var(--eco-produced)/3)]
+      sm:text-[calc(18px+var(--eco-produced)/3)]
+      md:text-[calc(28px+var(--eco-produced)/3)]
+      lg:text-[calc(40px+var(--eco-produced)/3)]
+      xl:text-[calc(44px+var(--eco-produced)/3)]
+      2xl:text-[calc(100px+var(--eco-produced)/3)]
+      text-[#39B14D] translate-y-[calc(-52px+var(--eco-produced)/2)]
+      sm:translate-y-[calc(-52px+var(--eco-produced)/2)]
+      md:translate-y-[calc(-64px+var(--eco-produced)/2)]
+      lg:translate-y-[calc(-84px+var(--eco-produced)/2)]
+      xl:translate-y-[calc(-92px+var(--eco-produced)/2)]
+      2xl:translate-y-[calc(-220px+var(--eco-produced)/2)]"
+    >
+      {groupPercentages.EcoProduced}%
+    </span>
+                </div>
+            </motion.div>
+
+            {/* GreenTech (Row 4, Col 2) */}
+            <motion.div
+                className="flex items-center rounded-full shadow-md row-start-4 col-start-2
+  w-[calc(150px+var(--green-tech))]
+  sm:w-[calc(150px+var(--green-tech))]
+  md:w-[calc(210px+var(--green-tech))]
+  lg:w-[calc(270px+var(--green-tech))]
+  xl:w-[calc(300px+var(--green-tech))]
+  2xl:w-[calc(800px+var(--green-tech))]"
+                animate={{
+                    y: [0, -20 + Math.random() * 40, 20 - Math.random() * 40, -10, 10, 0],
+                    x: [0, Math.random() * 20 - 10, Math.random() * 20 - 10, 0],
+                }}
+                transition={{
+                    duration: 3 + Math.random() * 2, // ทำให้แต่ละ Bubble มีระยะเวลาไม่เท่ากัน
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    ease: "easeInOut",
+                    delay: Math.random() * 2, // แต่ละ Bubble เคลื่อนที่ไม่พร้อมกัน
+                }}
+                style={{ "--green-tech": `${groupPercentages.GreenTech}px` }}
+            >
+                <img
+                    src={groupImages.GreenTech}
+                    alt="Green Tech"
+                    className="object-cover rounded-full w-full h-full"
+                />
+                <div className="absolute flex items-center justify-center w-full h-full">
+    <span
+        className="font-bold text-[calc(18px+var(--green-tech)/3)]
+      sm:text-[calc(18px+var(--green-tech)/3)]
+      md:text-[calc(28px+var(--green-tech)/3)]
+      lg:text-[calc(40px+var(--green-tech)/3)]
+      xl:text-[calc(44px+var(--green-tech)/3)]
+      2xl:text-[calc(100px+var(--green-tech)/3)]
+      text-[#314397] translate-y-[calc(-116px+var(--green-tech)/2)]
+      sm:translate-y-[calc(-116px+var(--green-tech)/2)]
+      md:translate-y-[calc(-132px+var(--green-tech)/2)]
+      lg:translate-y-[calc(-148px+var(--green-tech)/2)]
+      xl:translate-y-[calc(-160px+var(--green-tech)/2)]
+      2xl:translate-y-[calc(-300px+var(--green-tech)/2)]"
+    >
+      {groupPercentages.GreenTech}%
+    </span>
+                </div>
+            </motion.div>
+
         </div>
       </div>
 
