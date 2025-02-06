@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from "react";
 import Cookies from 'js-cookie';
 export default function Home() {
   const [isClicked, setIsClicked] = useState(false);
