@@ -22,24 +22,26 @@ export default function QuizPage() {
   }, []);
 
     const shareToInstagram = async () => {
-        const imageUrl = "https://nanyang-james24.vercel.app/image/ecoscore1.png";
+        const imageUrl = isEnglish
+            ? "https://nanyang-james24.vercel.app/image/bgeco1EN.jpg"
+            : "https://nanyang-james24.vercel.app/image/bgeco1.jpg";
 
         try {
             const response = await fetch(imageUrl);
             const blob = await response.blob();
-            const file = new File([blob], "ecoscore1.png", { type: "image/png" });
+            const file = new File([blob], isEnglish ? "bgeco1EN.jpg" : "bgeco1.jpg", { type: "image/png" });
 
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
                 await navigator.share({
-                    title: "แชร์ Eco Score ของฉัน!",
-                    text: "เช็คคะแนน Eco Score ของคุณเลย!",
+                    title: isEnglish ? "Share My Eco Score!" : "แชร์ Eco Score ของฉัน!",
+                    text: isEnglish ? "Check your Eco Score now!" : "เช็คคะแนน Eco Score ของคุณเลย!",
                     files: [file],
                 });
             } else {
-                alert("เบราว์เซอร์ของคุณไม่รองรับการแชร์ไฟล์!");
+                alert(isEnglish ? "Your browser doesn't support file sharing!" : "เบราว์เซอร์ของคุณไม่รองรับการแชร์ไฟล์!");
             }
         } catch (error) {
-            console.error("เกิดข้อผิดพลาด:", error);
+            console.error(isEnglish ? "An error occurred:" : "เกิดข้อผิดพลาด:", error);
         }
     };
 
