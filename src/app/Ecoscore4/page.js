@@ -26,6 +26,22 @@ export default function QuizPage() {
     const language = Cookies.get("language");
     setIsEnglish(language === "en");
   }, []);
+    const shareToInstagramStories = () => {
+        const imageUrl = "https://nanyang-james24.vercel.app/image/ecoscore1.png";
+        const stickerUrl = "https://nanyang-james24.vercel.app";
+
+        if (/android/i.test(navigator.userAgent)) {
+            // Android ใช้ Intent Scheme
+            const intentUrl = `intent://create/story?background_image_url=${encodeURIComponent(imageUrl)}&sticker_url=${encodeURIComponent(stickerUrl)}#Intent;package=com.instagram.android;scheme=instagram;end`;
+            window.location.href = intentUrl;
+        } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // iOS ใช้ Deep Linking Scheme
+            const iosUrl = `instagram-stories://share?background_image_url=${encodeURIComponent(imageUrl)}&sticker_url=${encodeURIComponent(stickerUrl)}`;
+            window.location.href = iosUrl;
+        } else {
+            alert("Instagram Story Sharing รองรับเฉพาะบนมือถือเท่านั้น!");
+        }
+    };
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -65,40 +81,31 @@ export default function QuizPage() {
             </button>
 
             {/* Share Button */}
-            <button
-              className="h-[40px] sm:h-[40px] md:h-[55px] lg:h-[80px] flex justify-center items-center"
-              onClick={() => {
-                const shareUrl = encodeURIComponent(
-                  "https://nanyang-ss9w.vercel.app"
-                );
-                const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
-                window.location.href = facebookShareUrl;
-              }}
-            >
-              <img
-                src="/image/facebook.png"
-                alt="Share"
-                className="w-full h-full object-contain"
-              />
-            </button>
+              <button
+                  className="h-[40px] sm:h-[40px] md:h-[55px] lg:h-[80px] flex justify-center items-center"
+                  onClick={() => {
+                      const facebookShareUrl = `https://www.facebook.com/dialog/feed?app_id=653004017158901&display=popup&link=${encodeURIComponent("https://nanyang-19r9.vercel.app")}&picture=${encodeURIComponent("https://nanyang-jl85.vercel.app/image/ecoscore1.png")}&name=${encodeURIComponent("นี่คือหัวข้อโพสต์")}&caption=${encodeURIComponent("ตัวอย่างโพสต์จาก Graph API")}&description=${encodeURIComponent("นี่คือรายละเอียดของโพสต์")}&redirect_uri=${encodeURIComponent("https://nanyang-jl85.vercel.app/callback")}`;
+                      window.open(facebookShareUrl, "_blank", "width=600,height=400");
+                  }}
+              >
+                  <img
+                      src="/image/facebook.png"
+                      alt="Share"
+                      className="w-full h-full object-contain"
+                  />
+              </button>
 
             {/* Instagram Share Button */}
-            <button
-              className="h-[40px] sm:h-[40px] md:h-[55px] lg:h-[80px] flex justify-center items-center"
-              onClick={() => {
-                const shareUrl = "https://nanyang-ss9w.vercel.app"; // 🔗 URL ของเกม
-                const instagramStoryUrl = `https://www.instagram.com/stories/create?url=${encodeURIComponent(
-                  shareUrl
-                )}`;
-                window.open(instagramStoryUrl, "_blank");
-              }}
-            >
-              <img
-                src="/image/instagram.png"
-                alt="Share to Instagram"
-                className="w-full h-full object-contain"
-              />
-            </button>
+              <button
+                  className="h-[40px] sm:h-[40px] md:h-[55px] lg:h-[80px] flex justify-center items-center"
+                  onClick={shareToInstagramStories}
+              >
+                  <img
+                      src="/image/instagram.png"
+                      alt="Share to Instagram"
+                      className="w-full h-full object-contain"
+                  />
+              </button>
           </div>
         </div>
 
