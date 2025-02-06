@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Cookies from "js-cookie";
 
 export default function QuizPage() {
+    const [selectedButton, setSelectedButton] = useState(null);
   const router = useRouter();
     const handleNextClick = (selectedButton) => {
         if (selectedButton !== null) {
