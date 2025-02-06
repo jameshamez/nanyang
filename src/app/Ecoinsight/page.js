@@ -297,12 +297,12 @@ export default function GroupsPage() {
       lg:text-[calc(40px+var(--green-tech)/3)]
       xl:text-[calc(44px+var(--green-tech)/3)]
       2xl:text-[calc(100px+var(--green-tech)/3)]
-      text-[#314397] translate-y-[calc(-116px+var(--green-tech)/2)]
-      sm:translate-y-[calc(-116px+var(--green-tech)/2)]
-      md:translate-y-[calc(-132px+var(--green-tech)/2)]
-      lg:translate-y-[calc(-148px+var(--green-tech)/2)]
-      xl:translate-y-[calc(-160px+var(--green-tech)/2)]
-      2xl:translate-y-[calc(-300px+var(--green-tech)/2)]"
+      text-[#314397] translate-y-[calc(-50px+var(--green-tech)/2)]
+      sm:translate-y-[calc(-50px+var(--green-tech)/2)]
+      md:translate-y-[calc(-66px+var(--green-tech)/2)]
+      lg:translate-y-[calc(-82px+var(--green-tech)/2)]
+      xl:translate-y-[calc(-94px+var(--green-tech)/2)]
+      2xl:translate-y-[calc(-234px+var(--green-tech)/2)]"
     >
       {groupPercentages.GreenTech}%
     </span>
