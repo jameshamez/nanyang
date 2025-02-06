@@ -18,7 +18,24 @@ export default function Home() {
     setIsEnglish(newLanguage);
     Cookies.set('language', newLanguage ? 'en' : 'fr', { expires: 7 }); // Set cookie for 7 days
   };
+  useEffect(() => {
+    // ตรวจสอบ User Agent
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const isLineBrowser = /Line/i.test(userAgent);
 
+    // ถ้าเปิดจาก LINE ให้ Redirect ไป Chrome หรือ Safari
+    if (isLineBrowser) {
+      const url = window.location.href; // URL ปัจจุบัน
+      alert("กรุณาเปิดเว็บไซต์ใน Chrome หรือ Safari เพื่อใช้งานได้เต็มที่!");
+
+      // ลองเปิด Chrome บน iOS / Android
+      if (/iPhone|iPad|iPod/i.test(userAgent)) {
+        window.location.href = `googlechrome://${url.replace("https://", "").replace("http://", "")}`;
+      } else if (/android/i.test(userAgent)) {
+        window.location.href = `intent://${url.replace("https://", "").replace("http://", "")}#Intent;scheme=https;package=com.android.chrome;end;`;
+      }
+    }
+  }, []);
   return (
     <div
       className="min-h-screen bg-cover bg-center relative overflow-hidden"
