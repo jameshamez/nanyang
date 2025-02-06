@@ -6,9 +6,13 @@ import Cookies from "js-cookie";
 
 export default function QuizPage() {
   const router = useRouter();
-  const handleNextClick = () => {
-    router.push("/Ecoinsight");
-  };
+    const handleNextClick = (selectedButton) => {
+        if (selectedButton !== null) {
+            router.push("/Ecoinsight");
+        } else {
+            router.push("/Ecoinsight");
+        }
+    };
 
   const [isEnglish, setIsEnglish] = useState(false);
   useEffect(() => {
