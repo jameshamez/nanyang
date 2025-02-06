@@ -16,22 +16,30 @@ export default function QuizPage() {
     setIsEnglish(language === "en");
   }, []);
 
-  const shareToInstagramStories = () => {
-    const imageUrl = "https://nanyang-james24.vercel.app/image/ecoscore1.png";
-    const stickerUrl = "https://nanyang-james24.vercel.app";
+    const shareToInstagram = async () => {
+        const imageUrl = "https://nanyang-james24.vercel.app/image/ecoscore1.png";
 
-    if (/android/i.test(navigator.userAgent)) {
-      const intentUrl = `intent://create/story?background_image_url=${encodeURIComponent(imageUrl)}&sticker_url=${encodeURIComponent(stickerUrl)}#Intent;package=com.instagram.android;scheme=instagram;end`;
-      window.location.href = intentUrl;
-    } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-      const iosUrl = `instagram-stories://share?background_image_url=${encodeURIComponent(imageUrl)}&sticker_url=${encodeURIComponent(stickerUrl)}`;
-      window.location.href = iosUrl;
-    } else {
-      alert("Instagram Story Sharing รองรับเฉพาะบนมือถือเท่านั้น!");
-    }
-  };
+        try {
+            const response = await fetch(imageUrl);
+            const blob = await response.blob();
+            const file = new File([blob], "ecoscore.png", { type: "image/png" });
 
-  return (
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                await navigator.share({
+                    title: "แชร์ Eco Score ของฉัน!",
+                    text: "เช็คคะแนน Eco Score ของคุณเลย!",
+                    files: [file],
+                });
+            } else {
+                alert("เบราว์เซอร์ของคุณไม่รองรับการแชร์ไฟล์!");
+            }
+        } catch (error) {
+            console.error("เกิดข้อผิดพลาด:", error);
+        }
+    };
+
+
+    return (
       <AnimatePresence mode="wait">
         <motion.div
             key="quiz-page"
@@ -55,37 +63,47 @@ export default function QuizPage() {
                 alt="Eco Score Card"
                 className="w-[70%] max-w-[450px]"
             />
+              <div className="flex items-center gap-2 pb-6 sm:pb-8 md:pb-10 lg:pb-12">
 
-            {/* ✅ ปุ่มต่าง ๆ */}
-            <div className="flex items-center justify-center gap-2">
-              {/* ปุ่ม ECO TYPE INSIGHT */}
-              <button className="w-13 h-11 sm:w-20 sm:h-20 flex justify-center items-center p-0" onClick={handleNextClick}>
-                <img src="/image/buttoneco.png" alt="ECO TYPE INSIGHT" className="w-full h-full" />
+              {/* ECO TYPE INSIGHT Button */}
+              <button
+                  className="h-[40px] sm:h-[40px] md:h-[55px] lg:h-[80px] flex justify-center items-center"
+                  onClick={() => handleNextClick(selectedButton)}
+              >
+                  <img
+                      src="/image/buttoneco.png"
+                      alt="ECO TYPE INSIGHT"
+                      className="w-full h-full object-contain"
+                  />
               </button>
 
-              {/* ปุ่มแชร์ Facebook */}
+              {/* Share Button */}
               <button
-                  className="w-11 h-11 sm:w-20 sm:h-20 flex justify-center items-center p-0"
+                  className="h-[40px] sm:h-[40px] md:h-[55px] lg:h-[80px] flex justify-center items-center"
                   onClick={() => {
-                    const facebookShareUrl = `https://www.facebook.com/dialog/feed?app_id=653004017158901&display=popup&link=${encodeURIComponent(
-                        "https://nanyang-19r9.vercel.app"
-                    )}&picture=${encodeURIComponent("https://nanyang-jl85.vercel.app/image/ecoscore1.png")}&name=${encodeURIComponent(
-                        "นี่คือหัวข้อโพสต์"
-                    )}&caption=${encodeURIComponent("ตัวอย่างโพสต์จาก Graph API")}&description=${encodeURIComponent(
-                        "นี่คือรายละเอียดของโพสต์"
-                    )}&redirect_uri=${encodeURIComponent("https://nanyang-jl85.vercel.app/callback")}`;
-                    window.open(facebookShareUrl, "_blank", "width=600,height=400");
+                      const facebookShareUrl = `https://www.facebook.com/dialog/feed?app_id=653004017158901&display=popup&link=${encodeURIComponent("https://nanyang-19r9.vercel.app")}&picture=${encodeURIComponent("https://nanyang-jl85.vercel.app/image/ecoscore1.png")}&name=${encodeURIComponent("นี่คือหัวข้อโพสต์")}&caption=${encodeURIComponent("ตัวอย่างโพสต์จาก Graph API")}&description=${encodeURIComponent("นี่คือรายละเอียดของโพสต์")}&redirect_uri=${encodeURIComponent("https://nanyang-jl85.vercel.app/callback")}`;
+                      window.open(facebookShareUrl, "_blank", "width=600,height=400");
                   }}
               >
-                <img src="/image/facebook.png" alt="Share" className="w-full h-full" />
+                  <img
+                      src="/image/facebook.png"
+                      alt="Share"
+                      className="w-full h-full object-contain"
+                  />
               </button>
 
-              {/* ปุ่มแชร์ Instagram */}
-              <button className="w-11 h-11 sm:w-20 sm:h-20 flex justify-center items-center p-0" onClick={shareToInstagramStories}>
-                <img src="/image/instagram.png" alt="Share to Instagram" className="w-full h-full" />
+              {/* Instagram Share Button */}
+              <button
+                  className="h-[40px] sm:h-[40px] md:h-[55px] lg:h-[80px] flex justify-center items-center"
+                  onClick={shareToInstagram}
+              >
+                  <img
+                      src="/image/instagram.png"
+                      alt="Share to Instagram"
+                      className="w-full h-full object-contain"
+                  />
               </button>
-            </div>
-
+          </div>
           </div>
 
           {/* ✅ ใบไม้ลอยลงมา (Animation) */}
