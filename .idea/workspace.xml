@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="574966ff-fbd3-49af-85bc-af254879a8bb" name="Changes" comment="fix image ?">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Ecoscore1/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Ecoscore1/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Ecoscore2/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Ecoscore2/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Ecoscore3/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Ecoscore3/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Ecoscore4/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Ecoscore4/page.js" afterDir="false" />
-    </list>
+    <list default="true" id="574966ff-fbd3-49af-85bc-af254879a8bb" name="Changes" comment="fix image ?" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -241,7 +235,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738827015888</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="fix image ?">
+      <option name="closed" value="true" />
+      <created>1738827367072</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1738827367072</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

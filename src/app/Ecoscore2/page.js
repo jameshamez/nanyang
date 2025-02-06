@@ -34,7 +34,7 @@ export default function QuizPage() {
         try {
             const response = await fetch(imageUrl);
             const blob = await response.blob();
-            const file = new File([blob], isEnglish ? "bgeco2EN.jpg" : "bgeco2.jpg", { type: "image/png" });
+            const file = new File([blob], isEnglish ? "bgeco2EN.jpg" : "bgeco2.jpg", { type: "image/jpg" });
 
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
                 await navigator.share({
