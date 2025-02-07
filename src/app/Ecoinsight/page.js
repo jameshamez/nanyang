@@ -41,8 +41,8 @@ export default function GroupsPage() {
     // Initial fetch
     fetchGroups();
 
-    // Set up polling every 5 seconds
-    const intervalId = setInterval(fetchGroups, 5000);
+    // Set up polling every 20 seconds
+    const intervalId = setInterval(fetchGroups, 20000);
 
     // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
