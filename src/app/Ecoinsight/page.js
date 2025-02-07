@@ -37,7 +37,15 @@ export default function GroupsPage() {
         setGroupPercentages(data.groupPercentages);
       }
     }
+
+    // Initial fetch
     fetchGroups();
+
+    // Set up polling every 5 seconds
+    const intervalId = setInterval(fetchGroups, 5000);
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   // Images for each group
@@ -152,7 +160,7 @@ export default function GroupsPage() {
             <img
               src={groupImages.RecycledCotton}
               alt="Recycled Cotton"
-              className="object-cover rounded-full w-full h-full"
+              className="object-cover rounded-full"
             />
             <div className="absolute flex items-center justify-center w-full h-full">
               <span
