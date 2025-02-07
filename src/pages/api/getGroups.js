@@ -32,16 +32,16 @@ export default async function handler(req, res) {
 
       switch (groupName) {
         case "Ecoscore1":
-          groups.RecycledCotton += 1;
-          break;
-        case "Ecoscore2":
           groups.RecycledPolyester += 1;
           break;
-        case "Ecoscore3":
+        case "Ecoscore2":
           groups.EcoProduced += 1;
           break;
-        case "Ecoscore4":
+        case "Ecoscore3":
           groups.GreenTech += 1;
+          break;
+        case "Ecoscore4":
+          groups.RecycledCotton += 1;
           break;
       }
     });
