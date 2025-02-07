@@ -39,38 +39,35 @@ export default async function handler(req, res) {
     let minScore = Math.min(counts.A, counts.B, counts.C);
     let scoreDifference = maxScore - minScore;
 
-    let targetPage = "/Ecoscore1"; // Default page if no condition matches
+    // First, check if exactly two categories share the maximum score.
+    const maxCategories = Object.keys(counts).filter(
+      (key) => counts[key] === maxScore
+    );
 
-    // ✅ GreenTech condition (if max score is not greater than the threshold OR score difference is ≤ 1)
-    if (
+    if (maxCategories.length === 2) {
+      // If two categories share the max value, direct to Ecoscore2
+      targetPage = "/Ecoscore2";
+    } else if (
+      // ✅ GreenTech condition: if max score is within threshold OR score difference is ≤ 1
       maxScore <= Math.ceil(userAnswers.answers.length / 3) ||
       scoreDifference <= 1
     ) {
       targetPage = "/Ecoscore1";
     } else {
-      // ✅ Check if exactly two categories have the maximum score
-      const maxCategories = Object.keys(counts).filter(
+      // Only one category has the highest score; determine which one it is.
+      let maxCategory = Object.keys(counts).find(
         (key) => counts[key] === maxScore
       );
-      if (maxCategories.length === 2) {
-        // If two categories share the max value, direct to Ecoscore2
-        targetPage = "/Ecoscore2";
-      } else {
-        // Only one category has the highest score; determine which one it is.
-        let maxCategory = Object.keys(counts).find(
-          (key) => counts[key] === maxScore
-        );
 
-        if (maxCategory === "A") {
-          targetPage = "/Ecoscore4";
-        } else if (maxCategory === "C") {
-          targetPage = "/Ecoscore3";
-        } else if (maxCategory === "B") {
-          targetPage = "/Ecoscore1";
-        } else {
-          // Fallback (if none of the expected categories match)
-          targetPage = "/Ecoscore1";
-        }
+      if (maxCategory === "A") {
+        targetPage = "/Ecoscore4";
+      } else if (maxCategory === "C") {
+        targetPage = "/Ecoscore3";
+      } else if (maxCategory === "B") {
+        targetPage = "/Ecoscore1";
+      } else {
+        // Fallback if no expected category matches
+        targetPage = "/Ecoscore1";
       }
     }
 
