@@ -11,3 +11,20 @@ const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
 });
+
+export const metadata = {
+    title: "Revive+ by Nan Yang Textile Group",
+    description: "Revive+ by Nan Yang Textile Group",
+};
+
+export default function RootLayout({ children }) {
+    return (
+        <html lang="en">
+        <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+        {children}
+        </body>
+        </html>
+    );
+}
