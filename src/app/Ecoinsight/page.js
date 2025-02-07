@@ -41,8 +41,8 @@ export default function GroupsPage() {
     // Initial fetch
     fetchGroups();
 
-    // Set up polling every 5 seconds
-    const intervalId = setInterval(fetchGroups, 5000);
+    // Set up polling every 10 seconds
+    const intervalId = setInterval(fetchGroups, 10000);
 
     // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
@@ -215,7 +215,7 @@ export default function GroupsPage() {
             <img
               src={groupImages.RecycledPolyester}
               alt="Recycled Polyester"
-              className="object-cover rounded-full w-full h-full"
+              className="object-cover rounded-full"
             />
             <div className="absolute flex items-center justify-center w-full h-full">
               <span
@@ -238,7 +238,7 @@ export default function GroupsPage() {
           </motion.div>
           {/* Eco Produced (Row 3, Col 1) */}
           <motion.div
-            className="flex items-center rounded-full shadow-md row-start-3 col-start-1
+            className="flex items-center rounded-full shadow-md row-start-3 col-start-1 
   w-[calc(150px+var(--eco-produced))]
   sm:w-[calc(150px+var(--eco-produced))]
   md:w-[calc(210px+var(--eco-produced))]
@@ -268,7 +268,7 @@ export default function GroupsPage() {
             <img
               src={groupImages.EcoProduced}
               alt="Eco Produced"
-              className="object-cover rounded-full w-full h-full"
+              className="object-cover rounded-full"
             />
             <div className="absolute flex items-center justify-center w-full h-full">
               <span
