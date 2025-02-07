@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Cookies from "js-cookie";
 
@@ -23,6 +23,10 @@ export default function GroupsPage() {
     GreenTech: "0",
   });
 
+  // useRef to store the previous data - **DECLARE THESE HERE, OUTSIDE useEffect**
+  const previousGroups = useRef(groups);
+  const previousGroupPercentages = useRef(groupPercentages);
+
   const getRandomPosition = () => ({
     left: `${Math.random() * 100}%`,
     top: `-${Math.random() * 20}%`, // start just above the viewport
@@ -33,8 +37,26 @@ export default function GroupsPage() {
       const res = await fetch("/api/getGroups");
       if (res.ok) {
         const data = await res.json();
-        setGroups(data.groups);
-        setGroupPercentages(data.groupPercentages);
+        const newGroups = data.groups;
+        const newGroupPercentages = data.groupPercentages;
+
+        // Compare new data with previous data
+        if (
+          JSON.stringify(newGroups) !==
+            JSON.stringify(previousGroups.current) ||
+          JSON.stringify(newGroupPercentages) !==
+            JSON.stringify(previousGroupPercentages.current)
+        ) {
+          // Update state only if data has changed
+          setGroups(newGroups);
+          setGroupPercentages(newGroupPercentages);
+
+          // Update previous data refs
+          previousGroups.current = newGroups;
+          previousGroupPercentages.current = newGroupPercentages;
+        } else {
+          console.log("Data has not changed, no update needed.");
+        }
       }
     }
 
