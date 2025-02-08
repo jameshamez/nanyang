@@ -35,10 +35,10 @@ export default async function handler(req, res) {
           groups.RecycledPolyester += 1;
           break;
         case "Ecoscore2":
-          groups.EcoProduced += 1;
+          groups.GreenTech += 1;
           break;
         case "Ecoscore3":
-          groups.GreenTech += 1;
+          groups.EcoProduced += 1;
           break;
         case "Ecoscore4":
           groups.RecycledCotton += 1;

@@ -71,7 +71,7 @@ export default async function handler(req, res) {
       maxScore <= Math.ceil(userAnswers.answers.length / 3) ||
       scoreDifference <= 1
     ) {
-      targetPage = "/Ecoscore1";
+      targetPage = "/Ecoscore2";
       console.log(
         "Debug: GreenTech condition met, setting targetPage to /Ecoscore1"
       );
