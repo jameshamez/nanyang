@@ -17,17 +17,25 @@ export default function UserAnswersTable() {
             try {
                 const usersRes = await fetch("/api/getUsers");
                 const quizRes = await fetch("/api/getUserAnswers");
+                const ecoRes = await fetch("/api/getGroupTable"); // ✅ เพิ่ม API fetch eco_scores
 
-                if (usersRes.ok && quizRes.ok) {
+                if (usersRes.ok && quizRes.ok && ecoRes.ok) {
                     const users = await usersRes.json();
                     const quizzes = await quizRes.json();
+                    const ecoScores = await ecoRes.json();
 
-                    // ✅ เชื่อมโยง Users และ Quiz Answers โดยใช้ user_id
+                    // ✅ Map `eco_scores` กับ `user_id`
+                    const groupMap = ecoScores.reduce((acc, score) => {
+                        acc[score.user_id] = score.group_name || "-"; // ถ้าไม่มีค่าให้เป็น "-"
+                        return acc;
+                    }, {});
+
+                    // ✅ รวมข้อมูล Users และ Quiz Answers
                     const combined = users.map((user) => {
                         const userQuiz =
                             quizzes.find((q) => q.user_id === user._id) || { answers: [], created_at: null };
 
-                        // ✅ แปลง answers ให้อยู่ในรูปแบบ Q1, Q2, Q3, ...
+                        // ✅ แปลง answers เป็น Q1, Q2, Q3, ...
                         const answersMap = userQuiz.answers.reduce(
                             (acc, ans) => {
                                 acc[`Q${ans.question_no}`] = ans.answer;
@@ -36,15 +44,11 @@ export default function UserAnswersTable() {
                             { Q1: "-", Q2: "-", Q3: "-", Q4: "-", Q5: "-" }
                         );
 
-                        // ✅ แปลง `created_at` เป็น Date Object สำหรับ Sorting
-                        const formattedDate = userQuiz.created_at
-                            ? new Date(userQuiz.created_at)
-                            : null;
-
                         return {
                             ...user,
                             ...answersMap,
-                            created_at: formattedDate, // ✅ เก็บเป็น Date Object
+                            group: groupMap[user._id] || "-", // ✅ เพิ่ม Group จาก eco_scores
+                            created_at: userQuiz.created_at ? new Date(userQuiz.created_at) : null,
                         };
                     });
 
@@ -58,13 +62,14 @@ export default function UserAnswersTable() {
         fetchData();
     }, []);
 
-    // ✅ กำหนด columns สำหรับ React Table (รองรับการเรียงลำดับ)
+    // ✅ กำหนด columns (เพิ่ม `group`)
     const columns = [
         { accessorKey: "name", header: "ชื่อ" },
         { accessorKey: "gender", header: "เพศ" },
         { accessorKey: "age", header: "อายุ" },
         { accessorKey: "occupation", header: "อาชีพ" },
         { accessorKey: "companySector", header: "ภาคธุรกิจ" },
+        { accessorKey: "group", header: "กลุ่ม" }, // ✅ เพิ่ม column group
         { accessorKey: "Q1", header: "Q1" },
         { accessorKey: "Q2", header: "Q2" },
         { accessorKey: "Q3", header: "Q3" },
@@ -89,21 +94,20 @@ export default function UserAnswersTable() {
         },
     ];
 
-    // ✅ สร้าง Table Instance พร้อม Sorting & Pagination
+    // ✅ สร้าง Table Instance
     const table = useReactTable({
         data: combinedData,
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
-        getSortedRowModel: getSortedRowModel(), // ✅ เพิ่ม Sorting Model
+        getSortedRowModel: getSortedRowModel(),
         initialState: {
-            pagination: { pageIndex: 0, pageSize: 10 }, // ✅ แสดงทีละ 10 รายการ
-            sorting: [{ id: "created_at", desc: true }] // ✅ เรียง `created_at` จากใหม่ → เก่า
+            pagination: { pageIndex: 0, pageSize: 10 },
+            sorting: [{ id: "created_at", desc: true }]
         }
     });
 
-
-    // ✅ ฟังก์ชัน Export Excel (รวม `created_at` ด้วย)
+    // ✅ Export to Excel
     const exportToExcel = () => {
         const ws = XLSX.utils.json_to_sheet(
             combinedData.map((row) => ({
@@ -135,7 +139,7 @@ export default function UserAnswersTable() {
                 className="mx-auto mb-8 md:mb-6 w-[10%] max-w-[100px] animate-logo-bounce"
             />
 
-            {/* ✅ Data Table (รองรับ Sorting & Pagination) */}
+            {/* ✅ Data Table */}
             <div className="overflow-hidden bg-white shadow-xl rounded-lg p-5">
                 <table className="w-full text-sm border border-gray-300 rounded-lg overflow-hidden">
                     <thead className="bg-blue-400 text-white">
@@ -190,7 +194,7 @@ export default function UserAnswersTable() {
                 </button>
             </div>
 
-            {/* ✅ ปุ่ม Export Excel (อยู่ข้างล่าง) */}
+            {/* ✅ ปุ่ม Export Excel */}
             <div className="mt-6 text-center">
                 <button
                     className="px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 shadow-md"

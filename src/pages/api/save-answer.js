@@ -21,13 +21,30 @@ export default async function handler(req, res) {
     const db = client.db("nanyang");
     const collection = db.collection("quiz");
 
-    // ✅ บันทึกคำตอบลง MongoDB
-    await collection.updateOne(
-        { user_id: new ObjectId(userId) },
-        { $push: { answers: { question_no, answer } }, $setOnInsert: { created_at: new Date() } },
-        { upsert: true }
-    );
+    // ✅ ตรวจสอบว่ามีคำตอบสำหรับ `question_no` อยู่แล้วหรือไม่
+    const existingAnswer = await collection.findOne({
+        user_id: new ObjectId(userId),
+        answers: { $elemMatch: { question_no } },
+    });
+
+    if (existingAnswer) {
+        // ✅ ถ้ามี `question_no` อยู่แล้ว → อัปเดตคำตอบแทน
+        await collection.updateOne(
+            { user_id: new ObjectId(userId), "answers.question_no": question_no },
+            { $set: { "answers.$.answer": answer } }
+        );
+    } else {
+        // ✅ ถ้า `question_no` ยังไม่มี → เพิ่มคำตอบใหม่เข้าไป
+        await collection.updateOne(
+            { user_id: new ObjectId(userId) },
+            {
+                $push: { answers: { question_no, answer } },
+                $setOnInsert: { created_at: new Date() }
+            },
+            { upsert: true }
+        );
+    }
 
     client.close();
-    res.status(200).json({ message: "Answer saved" });
+    res.status(200).json({ message: "Answer saved/updated" });
 }
